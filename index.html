@@ -157,7 +157,7 @@ function saveSwatch(mode){
 		document.getElementById("b"+row+"5").style ="background-color: "+l5+"; ";
 		
 		//add base to palette	
-		document.getElementById("cell"+cell+"").value="";
+		document.getElementById("cell"+cell+"").value= rgbToHex(l1);
 
 		 
 		localStorage.setItem("b"+row+"1",l1);
@@ -188,7 +188,7 @@ function saveSwatch(mode){
 
 
 		//add base to palette	
-		document.getElementById("cell"+cell+"").value="blue";	
+		document.getElementById("cell"+cell+"").value= rgbToHex(tl1);	
 
 		localStorage.setItem("b"+row+"1",tl1);
 		localStorage.setItem("b"+row+"2",tl2);
@@ -210,6 +210,45 @@ function saveSwatch(mode){
 	
 }
 
+
+	function dth(num2){
+		var hex1 = (parseInt(num2))>>4;
+		var hex2 = (parseInt(num2)) % 16;
+		var hexseq = hexReplace(hex1).toString() + hexReplace(hex2).toString();
+		return hexseq;
+		
+	}
+
+	function hexReplace(num1) {
+		switch (num1*1) {
+			case 10:
+				return "A";
+			case 11:
+				return "B";	
+			case 12:
+				return "C";
+			case 13:
+				return "D";
+			case 14:
+				return "E";
+			case 15:
+				return "F";
+			default:
+				return num1;
+		}
+	}
+
+	function rgbToHex(rgbseq){
+		
+		rgbseq = rgbseq.substring(4,rgbseq.length-1);
+		rgbseq = rgbseq.split(",");
+		red = dth(rgbseq[0]);
+		green = dth(rgbseq[1]);
+		blue = dth(rgbseq[2]);
+		return "#"+ red.toString()+ green.toString() + blue.toString();
+	}
+	
+	
 //closure
 $=(function $(fx) {    function resume() { 
 			//loop performance > shift to loop
@@ -246,7 +285,7 @@ $=(function $(fx) {    function resume() {
 
 	//function saveTints() {var y =2;  }; 
 	//function saveShades() {var y =3;  }; 
-
+		   
 	//invoke function
 	eval(""+fx.toString()+"();");
  });
