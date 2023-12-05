@@ -1,0 +1,410 @@
+<!doctype html>
+<html>
+<title> Color Palette Generator </title>
+<style> 
+
+body {
+	color:#2e2e2e;
+	background-color: #fefefe;
+	font-family: system-ui,sans-serif;
+}
+
+.btn {
+
+height: 44px;
+min-width: 164px;
+max-width: 166px;
+min-height: 44px;
+max-height: 44px;
+padding: 0px 16px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+background-color: #dae9e81c;
+float:right;
+border:1px solid #87ceeb5c;
+border-radius:2px;
+box-shadow: 1px 1px #eeeeee;
+}
+
+.contentframe {
+float: left;
+width: 79%;
+}
+
+.sidebar {
+float: right;
+width: 19%;
+margin-left: 1%;
+}
+
+.swatches {
+    display: flex;
+  
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: start;
+    justify-items: left;
+}
+
+.swatchitem {
+	width: 90px;;
+	height: 40px; 
+	background-color:  white;
+	border: 1px dotted #eeeeeeee;
+	padding: 10px;
+	text-align: center;
+}
+
+.swatchitemsaved {
+	width: 20px;;
+	height: 20px; 
+	background-color:  white;
+	border: 1px dotted #eeeeeeee;
+	padding: 10px;
+	text-align: center;
+}
+
+
+.inputnum {
+	height: 24px;
+	border: 1px solid skyblue;
+}
+
+
+</style>
+<script>
+var row=1;
+var cell=1;
+
+function color1(){
+//alert("varcheck");
+// Author: Saileswar Mahakud | www.saileswar.webflow.io
+// css insert rule
+var  h = document.getElementById("h").value;
+var  s = document.getElementById("s").value;
+var  l = document.getElementById("l").value;
+var  stps = document.getElementById("stpcnt").value;
+
+var  th = document.getElementById("th").value;
+var  ts = document.getElementById("ts").value;
+var  tl = document.getElementById("tl").value;
+var  tstps = document.getElementById("tstpcnt").value;
+
+
+
+//shades
+h = parseInt(h);
+s = parseInt(s);
+l = parseInt(l);
+stps = parseInt(stps);
+
+//tint
+th = parseInt(th);
+ts = parseInt(ts);
+tl = parseInt(tl);
+tstps = parseInt(tstps);
+  
+
+//shades
+var sl = (100-l)/stps;
+
+var l1 = l + sl;
+var l2 = l + sl + sl;
+var l3 = l + sl + sl + sl;
+var l4 = l + sl + sl + sl + sl;
+
+document.getElementById("inptclr").style ="background-color: HSL("+h+","+ s +"%,"+l+"%); padding: 10px;border:none;";
+document.getElementById("cs1").style ="background-color: HSL("+h+","+ s +"%,"+l1+"%); padding: 10px;border:none;";
+document.getElementById("cs2").style ="background-color: HSL("+h+","+ s +"%,"+l2+"%); padding: 10px;border:none;";
+document.getElementById("cs3").style ="background-color: HSL("+h+","+ s +"%,"+l3+"%); padding: 10px;border:none;";
+document.getElementById("cs4").style ="background-color: HSL("+h+","+ s +"%,"+l4+"%); padding: 10px;border:none;";
+
+
+//tints
+var tsl = (tl-0)/tstps;
+
+var tl1 = tl - tsl;
+var tl2 = tl - tsl - tsl;
+var tl3 = tl - tsl - tsl - tsl;
+var tl4 = tl - tsl - tsl - tsl - tsl;
+
+document.getElementById("tinptclr").style ="background-color: HSL("+th+","+ ts +"%,"+tl+"%); padding: 10px;border:none;";
+document.getElementById("tcs1").style ="background-color: HSL("+th+","+ ts +"%,"+tl1+"%); padding: 10px;border:none;";
+document.getElementById("tcs2").style ="background-color: HSL("+th+","+ ts +"%,"+tl2+"%); padding: 10px;border:none;";
+document.getElementById("tcs3").style ="background-color: HSL("+th+","+ ts +"%,"+tl3+"%); padding: 10px;border:none;";
+document.getElementById("tcs4").style ="background-color: HSL("+th+","+ ts +"%,"+tl4+"%); padding: 10px;border:none;";
+
+
+}
+
+
+function saveSwatch(mode){
+	//document.getElementById("cs1").style["backgroundColor"]
+
+	if (mode == "shades") {
+		//save shades
+		var l1 = document.getElementById("inptclr").style["backgroundColor"];
+		var l2 = document.getElementById("cs1").style["backgroundColor"];
+		var l3 = document.getElementById("cs2").style["backgroundColor"];
+		var l4 = document.getElementById("cs3").style["backgroundColor"];
+		var l5 = document.getElementById("cs4").style["backgroundColor"];
+			
+		document.getElementById("b"+row+"1").style ="background-color:"+l1+"; ";
+		document.getElementById("b"+row+"2").style ="background-color: "+l2+"; ";
+		document.getElementById("b"+row+"3").style ="background-color: "+l3+"; ";
+		document.getElementById("b"+row+"4").style ="background-color: "+l4+"; ";
+		document.getElementById("b"+row+"5").style ="background-color: "+l5+"; ";
+		
+		//add base to palette	
+		document.getElementById("cell"+cell+"").value="";
+
+		 
+		localStorage.setItem("b"+row+"1",l1);
+		localStorage.setItem("b"+row+"2",l2);
+		localStorage.setItem("b"+row+"3",l3);
+		localStorage.setItem("b"+row+"4",l4);
+		localStorage.setItem("b"+row+"5",l5);
+
+		row = row+1;
+		if(row == 6) {row=1;}
+
+		cell=cell+1;
+		if (cell == 16) {cell=1;}
+		
+	} else {
+		//save tints
+		var tl1 = document.getElementById("tinptclr").style["backgroundColor"];
+		var tl2 = document.getElementById("tcs1").style["backgroundColor"];
+		var tl3 = document.getElementById("tcs2").style["backgroundColor"];
+		var tl4 = document.getElementById("tcs3").style["backgroundColor"];
+		var tl5 = document.getElementById("tcs4").style["backgroundColor"];
+		
+		document.getElementById("b"+row+"1").style ="background-color:"+tl1+"; ";
+		document.getElementById("b"+row+"2").style ="background-color: "+tl2+"; ";
+		document.getElementById("b"+row+"3").style ="background-color: "+tl3+"; ";
+		document.getElementById("b"+row+"4").style ="background-color: "+tl4+"; ";
+		document.getElementById("b"+row+"5").style ="background-color: "+tl5+"; ";
+
+
+		//add base to palette	
+		document.getElementById("cell"+cell+"").value="blue";	
+
+		localStorage.setItem("b"+row+"1",tl1);
+		localStorage.setItem("b"+row+"2",tl2);
+		localStorage.setItem("b"+row+"3",tl3);
+		localStorage.setItem("b"+row+"4",tl4);
+		localStorage.setItem("b"+row+"5",tl5);
+
+
+		row = row+1;
+		
+		if(row == 6) {row=1;}
+		
+		cell=cell+1;
+		if (cell == 16) {cell=1;}
+		
+
+	}
+
+	
+}
+
+//closure
+$=(function $(fx) {    function resume() { 
+			//loop performance > shift to loop
+			 
+			document.getElementById("b11").style ="background-color:"+localStorage.getItem("b11");+"; ";   
+			document.getElementById("b12").style ="background-color:"+localStorage.getItem("b12");+"; ";   
+			document.getElementById("b13").style ="background-color:"+localStorage.getItem("b13");+"; ";   
+			document.getElementById("b14").style ="background-color:"+localStorage.getItem("b14");+"; ";   
+			document.getElementById("b15").style ="background-color:"+localStorage.getItem("b15");+"; ";   
+			document.getElementById("b21").style ="background-color:"+localStorage.getItem("b21");+"; ";   
+			document.getElementById("b22").style ="background-color:"+localStorage.getItem("b22");+"; ";   
+			document.getElementById("b23").style ="background-color:"+localStorage.getItem("b23");+"; ";   
+			document.getElementById("b24").style ="background-color:"+localStorage.getItem("b24");+"; ";   
+			document.getElementById("b25").style ="background-color:"+localStorage.getItem("b25");+"; ";   
+			document.getElementById("b31").style ="background-color:"+localStorage.getItem("b31");+"; ";   
+			document.getElementById("b32").style ="background-color:"+localStorage.getItem("b32");+"; ";   
+			document.getElementById("b33").style ="background-color:"+localStorage.getItem("b33");+"; ";   
+			document.getElementById("b34").style ="background-color:"+localStorage.getItem("b34");+"; ";   
+			document.getElementById("b35").style ="background-color:"+localStorage.getItem("b35");+"; ";   
+			document.getElementById("b41").style ="background-color:"+localStorage.getItem("b41");+"; ";   
+			document.getElementById("b42").style ="background-color:"+localStorage.getItem("b42");+"; ";   
+			document.getElementById("b43").style ="background-color:"+localStorage.getItem("b43");+"; ";   
+			document.getElementById("b44").style ="background-color:"+localStorage.getItem("b44");+"; ";   
+			document.getElementById("b45").style ="background-color:"+localStorage.getItem("b45");+"; ";   
+			document.getElementById("b51").style ="background-color:"+localStorage.getItem("b51");+"; ";   
+			document.getElementById("b52").style ="background-color:"+localStorage.getItem("b52");+"; ";   
+			document.getElementById("b53").style ="background-color:"+localStorage.getItem("b53");+"; ";   
+			document.getElementById("b54").style ="background-color:"+localStorage.getItem("b54");+"; ";   
+			document.getElementById("b55").style ="background-color:"+localStorage.getItem("b55");+"; ";   
+			
+
+
+};     function abc2() {var y =2;  }; if(fx=="resume"){resume();}else{abc2();}; 
+
+ //function abc2() {var y =2;  }; 
+ //function abc3() {var y =3;  }; 
+// function abc4() {var y =4;  }; 
+// function abc5() {var y =5;  }; 
+
+	//invoke function
+	//eval(""+fx.toString()+"();");
+ });
+
+</script>
+<body onload=" $('resume'); ">
+
+<div style="clear: both;display:flex;">
+<div class="contentframe">
+<section style="border: 1px solid #eeeeee; border-top: 5px solid black; padding: 16px; box-shadow: 10px 1px 12px #cecece;">
+<input type="button" value="Save Swatch" class="btn" onCLick="saveSwatch('shades');">
+<h1>Color Shades generator</h1>
+<p> Select Hue, Saturation, Luminosity or change any color attribute</p>
+<form action="javascript:color1();">
+ 
+<input type="number" val= #000000 name="colorinput" id="h" placeholder="Hue" onChange="color1();" class="inputnum" /> &nbsp;&nbsp;&nbsp;&nbsp;
+<input type="number" val= #000000 name="colorinput" id="s"  placeholder="Saturation" onChange="color1();" class="inputnum" />  &nbsp;&nbsp;&nbsp;&nbsp;
+<input type="number" val= #000000 name="colorinput" id="l"  placeholder="Luminosity" onChange="color1();"  class="inputnum" />  &nbsp;&nbsp;&nbsp;&nbsp;
+<label>Color stops to White</label>
+<input type="number" value="4" name="colorinput" id="stpcnt" placeholder="4 stops"/ onChange="color1();" class="inputnum">  &nbsp;&nbsp;&nbsp;&nbsp;
+ 
+
+</form>
+
+<h4>Generated Colors</h4>
+
+<div class="swatches" >
+<span id="inptclr" class="swatchitem">Base</span>
+<span id="cs1" class="swatchitem">color stop 1</span>
+<span id="cs2" class="swatchitem">color stop 2</span>
+<span id="cs3" class="swatchitem">color stop 3</span>
+<span id="cs4" class="swatchitem">color stop 4</span>
+</div>
+
+</section>
+
+</br>
+</br>
+
+<section style="border: 1px solid #eeeeee; border-top: 5px solid black; padding: 16px; box-shadow: 10px 1px 12px #cecece">
+<input type="button" value=" Save Swatch" class="btn" onCLick="saveSwatch('tints');">
+<h1>Color Tints generator</h1>
+<p> Select Hue, Saturation, Luminosity or change any color attribute</p>
+<form action="javascript:color1();">
+<input type="number" val= #000000 name="colorinput" id="th" placeholder="Hue" onChange="color1();"  class="inputnum"/>  &nbsp;&nbsp;&nbsp;&nbsp;
+<input type="number" val= #000000 name="colorinput" id="ts" placeholder="Saturation" onChange="color1();"  class="inputnum" />  &nbsp;&nbsp;&nbsp;&nbsp;
+<input type="number" val= #000000 name="colorinput" id="tl" placeholder="Luminosity" onChange="color1();"  class="inputnum" />  &nbsp;&nbsp;&nbsp;&nbsp;
+
+<label>Color stops to Black</label>
+<input type="number" value="4" name="colorinput" id="tstpcnt" placeholder="4 stops" onChange="color1();"  class="inputnum" />  &nbsp;&nbsp;&nbsp;&nbsp;
+<!--input type="submit" value="generate" class="btn"-->
+
+
+
+</form>
+
+
+<h4>Generated Colors</h4>
+
+<div class="swatches" >
+<span id="tinptclr" class="swatchitem">Base</span>
+<span id="tcs1" class="swatchitem">color stop 1</span>
+<span id="tcs2" class="swatchitem">color stop 2</span>
+<span id="tcs3" class="swatchitem">color stop 3</span>
+<span id="tcs4" class="swatchitem">color stop 4</span>
+</div>
+</section>
+</div>
+<div class="sidebar">
+<section style="border: 1px solid #eeeeee; border-left: 5px solid darkgrey; padding: 16px; box-shadow: 10px 1px 12px #cecece; height: 600px;">
+<h4>Swatches</h4>
+<div id="savedSwatches">
+
+<div class="swatches" >
+<span id="b11" class="swatchitemsaved"></span>
+<span id="b12" class="swatchitemsaved"></span>
+<span id="b13" class="swatchitemsaved"></span>
+<span id="b14" class="swatchitemsaved"></span>
+<span id="b15" class="swatchitemsaved"></span>
+</div>
+
+<div class="swatches" >
+<span id="b21" class="swatchitemsaved"></span>
+<span id="b22" class="swatchitemsaved"></span>
+<span id="b23" class="swatchitemsaved"></span>
+<span id="b24" class="swatchitemsaved"></span>
+<span id="b25" class="swatchitemsaved"></span>
+</div>
+
+<div class="swatches" >
+<span id="b31" class="swatchitemsaved"></span>
+<span id="b32" class="swatchitemsaved"></span>
+<span id="b33" class="swatchitemsaved"></span>
+<span id="b34" class="swatchitemsaved"></span>
+<span id="b35" class="swatchitemsaved"></span>
+</div>
+
+<div class="swatches" >
+<span id="b41" class="swatchitemsaved"></span>
+<span id="b42" class="swatchitemsaved"></span>
+<span id="b43" class="swatchitemsaved"></span>
+<span id="b44" class="swatchitemsaved"></span>
+<span id="b45" class="swatchitemsaved"></span>
+</div>
+
+<div class="swatches" >
+<span id="b51" class="swatchitemsaved"></span>
+<span id="b52" class="swatchitemsaved"></span>
+<span id="b53" class="swatchitemsaved"></span>
+<span id="b54" class="swatchitemsaved"></span>
+<span id="b55" class="swatchitemsaved"></span>
+</div>
+
+
+</div>
+
+<h4>Palette</h4>
+<div id="savedSwatches">
+
+<div class="swatches">
+<input type="color" style="width: 40px;height: 40px;border: 1px solid white;" value="#ffffff" id="cell1">
+<input type="color" style="width: 40px;height: 40px;border: 1px solid white;" value="#ffffff" id="cell2">
+<input type="color" style="width: 40px;height: 40px;border: 1px solid white;" value="#ffffff" id="cell3">
+<input type="color" style="width: 40px;height: 40px;border: 1px solid white;" value="#ffffff" id="cell4">
+<input type="color" style="width: 40px;height: 40px;border: 1px solid white;" value="#ffffff" id="cell5">
+</div>
+
+
+<div class="swatches">
+<input type="color" style="width: 40px;height: 40px;border: 1px solid white;" value="#ffffff" id="cell6">
+<input type="color" style="width: 40px;height: 40px;border: 1px solid white;" value="#ffffff" id="cell7">
+<input type="color" style="width: 40px;height: 40px;border: 1px solid white;" value="#ffffff" id="cell8">
+<input type="color" style="width: 40px;height: 40px;border: 1px solid white;" value="#ffffff" id="cell9">
+<input type="color" style="width: 40px;height: 40px;border: 1px solid white;" value="#ffffff" id="cell10">
+</div>
+
+<div class="swatches">
+<input type="color" style="width: 40px;height: 40px;border: 1px solid white;" value="#ffffff" id="cell11">
+<input type="color" style="width: 40px;height: 40px;border: 1px solid white;" value="#ffffff" id="cell12">
+<input type="color" style="width: 40px;height: 40px;border: 1px solid white;" value="#ffffff" id="cell13">
+<input type="color" style="width: 40px;height: 40px;border: 1px solid white;" value="#ffffff" id="cell14">
+<input type="color" style="width: 40px;height: 40px;border: 1px solid white;" value="#ffffff" id="cell15">
+</div>
+
+</div>
+</br>
+<label style="font-weight: bold;font-size: 14px;">What's new?</label></br></br>
+<label style="font-weight: normal;font-size: 12px;">Save & resume your swatchess after closing tab.</label></br>
+</br>
+
+<label style="font-weight: normal;font-size: 10px;">&copy; 2023, Saileswar Mahakud. All rights reserved!</label></br>
+</section>
+
+</div>
+
+</div>
+
+</body>
+</html>
