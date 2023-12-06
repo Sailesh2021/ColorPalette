@@ -80,6 +80,7 @@ body {
 	width: 40px;
 	height: 40px;
 	border: 1px solid white;
+	vertical-align: middle;
 }
 
 	
@@ -338,11 +339,11 @@ $=(function $(fx) {
 			
 			switch (mode) {
 				case "shades":
-					alert("shades swatches");
+					
 					saveShades();
 					break;
 				case "tints":
-					alert("tints swatches");
+					
 					saveTints();
 					break;
 				default:
@@ -392,7 +393,7 @@ $=(function $(fx) {
 <section style="border: 1px solid #eeeeee; border-top: 5px solid black; padding: 16px; box-shadow: 10px 1px 12px #cecece;">
 <input type="button" value=" 💾 Save Swatch" class="btn" onCLick="$('saveSwatch');">
 <h1>Generate 
-<select id="appmode" class="selectnum"><option value="shades">Shades</option><option value="tints">Tints</option></select> from 
+<select id="appmode" class="selectnum" onChange="color1();"><option value="shades">Shades</option><option value="tints">Tints</option></select> from 
 <input type="color" class="paletteitem" value="#ffffff">  </h1>
 <p>  Select Hue, Saturation, Luminosity or change any color attribute below </p>
 <form action="javascript:color1();">
@@ -400,7 +401,7 @@ $=(function $(fx) {
 <input type="number" val= #000000 name="colorinput" id="h" placeholder="Hue" onChange="color1();" class="inputnum" /> &nbsp;&nbsp;&nbsp;&nbsp;
 <input type="number" val= #000000 name="colorinput" id="s"  placeholder="Saturation" onChange="color1();" class="inputnum" />  &nbsp;&nbsp;&nbsp;&nbsp;
 <input type="number" val= #000000 name="colorinput" id="l"  placeholder="Luminosity" onChange="color1();"  class="inputnum" />  &nbsp;&nbsp;&nbsp;&nbsp;
-<label>Color stops to White</label>
+<label>Color stops</label>
 <input type="number" value="4" name="colorinput" id="stpcnt" placeholder="4 stops"/ onChange="color1();" class="inputnum">  &nbsp;&nbsp;&nbsp;&nbsp;
  
 
