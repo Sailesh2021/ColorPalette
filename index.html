@@ -71,7 +71,13 @@ margin-left: 1%;
 	border: 1px solid skyblue;
 }
 
+.paletteitem {
+	width: 40px;
+	height: 40px;
+	border: 1px solid white;
+}
 
+	
 </style>
 <script>
 var row=1;
@@ -352,7 +358,7 @@ $=(function $(fx) {    function resume() {
 <section style="border: 1px solid #eeeeee; border-top: 5px solid black; padding: 16px; box-shadow: 10px 1px 12px #cecece;">
 <input type="button" value=" 💾 Save Swatch" class="btn" onCLick="saveSwatch('shades');">
 <h1>Color Shades generator</h1>
-<p> Select Hue, Saturation, Luminosity or change any color attribute</p>
+<p> <input type="color" class="paletteitem">  Select Hue, Saturation, Luminosity or change any color attribute below </p>
 <form action="javascript:color1();">
  
 <input type="number" val= #000000 name="colorinput" id="h" placeholder="Hue" onChange="color1();" class="inputnum" /> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -382,7 +388,7 @@ $=(function $(fx) {    function resume() {
 <section style="border: 1px solid #eeeeee; border-top: 5px solid black; padding: 16px; box-shadow: 10px 1px 12px #cecece">
 <input type="button" value=" 💾 Save Swatch" class="btn" onCLick="saveSwatch('tints');">
 <h1>Color Tints generator</h1>
-<p> Select Hue, Saturation, Luminosity or change any color attribute</p>
+<p> <input type="color" class="paletteitem"> Select Hue, Saturation, Luminosity or change any color attribute below</p>
 <form action="javascript:color1();">
 <input type="number" val= #000000 name="colorinput" id="th" placeholder="Hue" onChange="color1();"  class="inputnum"/>  &nbsp;&nbsp;&nbsp;&nbsp;
 <input type="number" val= #000000 name="colorinput" id="ts" placeholder="Saturation" onChange="color1();"  class="inputnum" />  &nbsp;&nbsp;&nbsp;&nbsp;
