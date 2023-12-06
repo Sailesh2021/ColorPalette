@@ -390,11 +390,11 @@ $=(function $(fx) {
 
 <div style="clear: both;display:flex;">
 <div class="contentframe">
-<section style="border: 1px solid #eeeeee; border-top: 5px solid black; padding: 16px; box-shadow: 10px 1px 12px #cecece;">
+<section style="border: 1px solid #eeeeee; border-top: 5px solid black; padding: 16px; padding-bottom: 28px;box-shadow: 10px 1px 12px #cecece;">
 <input type="button" value=" 💾 Save Swatch" class="btn" onCLick="$('saveSwatch');">
 <h1>Generate 
 <select id="appmode" class="selectnum" onChange="color1();"><option value="shades">Shades</option><option value="tints">Tints</option></select> from 
-<input type="color" class="paletteitem" value="#ffffff">  </h1>
+<input type="color" class="paletteitem" value="#ffffff" id="basecolor"/>  </h1>
 <p>  Select Hue, Saturation, Luminosity or change any color attribute below </p>
 <form action="javascript:color1();">
  
@@ -407,6 +407,14 @@ $=(function $(fx) {
 
 </form>
 
+
+</section>
+
+</br>
+</br>
+
+<section style="border: 1px solid #eeeeee; border-top: 5px solid black; padding: 16px; box-shadow: 10px 1px 12px #cecece">
+
 <h4>Generated Colors</h4>
 
 <div class="swatches" >
@@ -416,14 +424,6 @@ $=(function $(fx) {
 <span id="cs3" class="swatchitem">color stop 3</span>
 <span id="cs4" class="swatchitem">color stop 4</span>
 </div>
-
-</section>
-
-</br>
-</br>
-
-<section style="border: 1px solid #eeeeee; border-top: 5px solid black; padding: 16px; box-shadow: 10px 1px 12px #cecece">
-
 </section>
 </div>
 <div class="sidebar">
