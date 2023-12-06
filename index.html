@@ -295,11 +295,9 @@ $=(function $(fx) {    function resume() {
 			
 			for (i =1; i<16;i++){
 				try {
-
 					if(!(localStorage.getItem("cell"+i+"") == null)){
 						document.getElementById("cell"+i+"").value = localStorage.getItem("cell"+i+"");   	
 					}
-    					
 				} catch (errorPalette) {
     					// local storage API permission error
 				}
@@ -311,6 +309,36 @@ $=(function $(fx) {    function resume() {
 
 	//function saveTints() {var y =2;  }; 
 	//function saveShades() {var y =3;  }; 
+	
+		function clearswatches(){
+
+			for (i =1 ; i<6; i++ ){
+				for (j =1 ; j<6;j++ ){
+					
+					document.getElementById("b"+i.toString()+j.toString() +"").style ="background-color:#ffffff ";
+					try{
+						localStorage.setItem("b"+i.toString()+j.toString() +"","#ffffff");
+					} catch (errorLoopApi){
+					
+					}
+				}
+			}
+		
+		}
+
+		function clearpalette(){
+			
+			for (i =1 ; i<16; i++ ){
+				
+					document.getElementById("cell"+i+"").value= "#ffffff";
+					try{
+						localStorage.setItem("cell"+cell+"","#ffffff");
+					} catch (errorLoopApi){
+					
+					}
+			}
+		
+		}
 		   
 	//invoke function
 	eval(""+fx.toString()+"();");
@@ -382,7 +410,9 @@ $=(function $(fx) {    function resume() {
 </div>
 <div class="sidebar">
 <section style="border: 1px solid #eeeeee; border-left: 5px solid darkgrey; padding: 16px; box-shadow: 10px 1px 12px #cecece; height: 600px;">
-<h4>Swatches</h4>
+<h4>Swatches
+<a href="" id="csw" style="float:right;font-size: x-small;text-align: center;padding-top: 4px;" onClick="$('clearswatches');">Clear All</a>
+</h4>
 <div id="savedSwatches">
 
 <div class="swatches" >
@@ -428,7 +458,9 @@ $=(function $(fx) {    function resume() {
 
 </div>
 
-<h4>Palette</h4>
+<h4>Palette
+<a href="" id="cpt" style="float:right;font-size: x-small;text-align: center;padding-top: 4px;" onClick="$('clearpalette');">Clear All</a>
+</h4>
 <div id="savedSwatches">
 
 <div class="swatches">
