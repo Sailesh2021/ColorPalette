@@ -71,6 +71,13 @@ margin-left: 1%;
 	border: 1px solid skyblue;
 }
 
+.selectnum {
+	height: 40px;
+	width: 80px;
+	border: 1px solid skyblue;
+	
+}
+
 .paletteitem {
 	width: 40px;
 	height: 40px;
@@ -92,11 +99,10 @@ var  s = document.getElementById("s").value;
 var  l = document.getElementById("l").value;
 var  stps = document.getElementById("stpcnt").value;
 
-var  th = document.getElementById("th").value;
-var  ts = document.getElementById("ts").value;
-var  tl = document.getElementById("tl").value;
-var  tstps = document.getElementById("tstpcnt").value;
-
+var  th = h;
+var  ts = s;
+var  tl = l;
+var  tstps = stps;
 
 
 //shades
@@ -120,12 +126,6 @@ var l2 = l + sl + sl;
 var l3 = l + sl + sl + sl;
 var l4 = l + sl + sl + sl + sl;
 
-document.getElementById("inptclr").style ="background-color: HSL("+h+","+ s +"%,"+l+"%); padding: 10px;border:none;";
-document.getElementById("cs1").style ="background-color: HSL("+h+","+ s +"%,"+l1+"%); padding: 10px;border:none;";
-document.getElementById("cs2").style ="background-color: HSL("+h+","+ s +"%,"+l2+"%); padding: 10px;border:none;";
-document.getElementById("cs3").style ="background-color: HSL("+h+","+ s +"%,"+l3+"%); padding: 10px;border:none;";
-document.getElementById("cs4").style ="background-color: HSL("+h+","+ s +"%,"+l4+"%); padding: 10px;border:none;";
-
 
 //tints
 var tsl = (tl-0)/tstps;
@@ -135,100 +135,35 @@ var tl2 = tl - tsl - tsl;
 var tl3 = tl - tsl - tsl - tsl;
 var tl4 = tl - tsl - tsl - tsl - tsl;
 
-document.getElementById("tinptclr").style ="background-color: HSL("+th+","+ ts +"%,"+tl+"%); padding: 10px;border:none;";
-document.getElementById("tcs1").style ="background-color: HSL("+th+","+ ts +"%,"+tl1+"%); padding: 10px;border:none;";
-document.getElementById("tcs2").style ="background-color: HSL("+th+","+ ts +"%,"+tl2+"%); padding: 10px;border:none;";
-document.getElementById("tcs3").style ="background-color: HSL("+th+","+ ts +"%,"+tl3+"%); padding: 10px;border:none;";
-document.getElementById("tcs4").style ="background-color: HSL("+th+","+ ts +"%,"+tl4+"%); padding: 10px;border:none;";
-
-
-}
-
-
-function saveSwatch(mode){
-	//document.getElementById("cs1").style["backgroundColor"]
-
-	if (mode == "shades") {
-		//save shades
-		var l1 = document.getElementById("inptclr").style["backgroundColor"];
-		var l2 = document.getElementById("cs1").style["backgroundColor"];
-		var l3 = document.getElementById("cs2").style["backgroundColor"];
-		var l4 = document.getElementById("cs3").style["backgroundColor"];
-		var l5 = document.getElementById("cs4").style["backgroundColor"];
+			var mode = document.getElementById("appmode").value;
 			
-		document.getElementById("b"+row+"1").style ="background-color:"+l1+"; ";
-		document.getElementById("b"+row+"2").style ="background-color: "+l2+"; ";
-		document.getElementById("b"+row+"3").style ="background-color: "+l3+"; ";
-		document.getElementById("b"+row+"4").style ="background-color: "+l4+"; ";
-		document.getElementById("b"+row+"5").style ="background-color: "+l5+"; ";
-
-		var hx = rgbToHex(l1);	
-		//add base to palette	
-		document.getElementById("cell"+cell+"").value= hx;
-
-		try {
-			localStorage.setItem("b"+row+"1",l1);
-			localStorage.setItem("b"+row+"2",l2);
-			localStorage.setItem("b"+row+"3",l3);
-			localStorage.setItem("b"+row+"4",l4);
-			localStorage.setItem("b"+row+"5",l5);
-
-			localStorage.setItem("cell"+cell+"",hx);
-		
-		} catch (errorShades) {
-			// local storage permission error
-		}
-		
-		row = row+1;
-		if(row == 6) {row=1;}
-
-		cell=cell+1;
-		if (cell == 16) {cell=1;}
-		
-	} else {
-		//save tints
-		var tl1 = document.getElementById("tinptclr").style["backgroundColor"];
-		var tl2 = document.getElementById("tcs1").style["backgroundColor"];
-		var tl3 = document.getElementById("tcs2").style["backgroundColor"];
-		var tl4 = document.getElementById("tcs3").style["backgroundColor"];
-		var tl5 = document.getElementById("tcs4").style["backgroundColor"];
-		
-		document.getElementById("b"+row+"1").style ="background-color:"+tl1+"; ";
-		document.getElementById("b"+row+"2").style ="background-color: "+tl2+"; ";
-		document.getElementById("b"+row+"3").style ="background-color: "+tl3+"; ";
-		document.getElementById("b"+row+"4").style ="background-color: "+tl4+"; ";
-		document.getElementById("b"+row+"5").style ="background-color: "+tl5+"; ";
+			
+			switch (mode) {
+				case "shades":
+					document.getElementById("inptclr").style ="background-color: HSL("+h+","+ s +"%,"+l+"%); padding: 10px;border:none;";
+					document.getElementById("cs1").style ="background-color: HSL("+h+","+ s +"%,"+l1+"%); padding: 10px;border:none;";
+					document.getElementById("cs2").style ="background-color: HSL("+h+","+ s +"%,"+l2+"%); padding: 10px;border:none;";
+					document.getElementById("cs3").style ="background-color: HSL("+h+","+ s +"%,"+l3+"%); padding: 10px;border:none;";
+					document.getElementById("cs4").style ="background-color: HSL("+h+","+ s +"%,"+l4+"%); padding: 10px;border:none;";
 
 
-		var hx = rgbToHex(tl1);	
-		//add base to palette	
-		document.getElementById("cell"+cell+"").value= hx;
+					break;
+				case "tints":
+						document.getElementById("inptclr").style ="background-color: HSL("+th+","+ ts +"%,"+tl+"%); padding: 10px;border:none;";
+					document.getElementById("cs1").style ="background-color: HSL("+th+","+ ts +"%,"+tl1+"%); padding: 10px;border:none;";
+					document.getElementById("cs2").style ="background-color: HSL("+th+","+ ts +"%,"+tl2+"%); padding: 10px;border:none;";
+					document.getElementById("cs3").style ="background-color: HSL("+th+","+ ts +"%,"+tl3+"%); padding: 10px;border:none;";
+					document.getElementById("cs4").style ="background-color: HSL("+th+","+ ts +"%,"+tl4+"%); padding: 10px;border:none;";
 
-		try {
-			localStorage.setItem("b"+row+"1",tl1);
-			localStorage.setItem("b"+row+"2",tl2);
-			localStorage.setItem("b"+row+"3",tl3);
-			localStorage.setItem("b"+row+"4",tl4);
-			localStorage.setItem("b"+row+"5",tl5);
-		
-			localStorage.setItem("cell"+cell+"",hx);
-		} catch (errorTints) {
-			// local storage permission error
-		}
-		
 
-		row = row+1;
-		
-		if(row == 6) {row=1;}
-		
-		cell=cell+1;
-		if (cell == 16) {cell=1;}
-		
+					break;
+				default:
+					 
+			}
 
-	}
-
-	
 }
+
+
 
 
 	function dth(num2){
@@ -270,7 +205,10 @@ function saveSwatch(mode){
 	
 	
 //closure
-$=(function $(fx) {    function resume() { 
+$=(function $(fx) {  
+
+			
+			  function resume() { 
 			//loop performance > shift to loop
 			 
 			document.getElementById("b11").style ="background-color:"+localStorage.getItem("b11");+"; ";   
@@ -313,9 +251,107 @@ $=(function $(fx) {    function resume() {
 
 };     
 
-	//function saveTints() {var y =2;  }; 
-	//function saveShades() {var y =3;  }; 
+		//save tints
+		function saveTints() {
+					//save tints
+		var tl1 = document.getElementById("inptclr").style["backgroundColor"];
+		var tl2 = document.getElementById("cs1").style["backgroundColor"];
+		var tl3 = document.getElementById("cs2").style["backgroundColor"];
+		var tl4 = document.getElementById("cs3").style["backgroundColor"];
+		var tl5 = document.getElementById("cs4").style["backgroundColor"];
+		
+		document.getElementById("b"+row+"1").style ="background-color:"+tl1+"; ";
+		document.getElementById("b"+row+"2").style ="background-color: "+tl2+"; ";
+		document.getElementById("b"+row+"3").style ="background-color: "+tl3+"; ";
+		document.getElementById("b"+row+"4").style ="background-color: "+tl4+"; ";
+		document.getElementById("b"+row+"5").style ="background-color: "+tl5+"; ";
+
+
+		var hx = rgbToHex(tl1);	
+		//add base to palette	
+		document.getElementById("cell"+cell+"").value= hx;
+
+		try {
+			localStorage.setItem("b"+row+"1",tl1);
+			localStorage.setItem("b"+row+"2",tl2);
+			localStorage.setItem("b"+row+"3",tl3);
+			localStorage.setItem("b"+row+"4",tl4);
+			localStorage.setItem("b"+row+"5",tl5);
+		
+			localStorage.setItem("cell"+cell+"",hx);
+		} catch (errorTints) {
+			// local storage permission error
+		}
+		
+
+		row = row+1;
+		
+		if(row == 6) {row=1;}
+		
+		cell=cell+1;
+		if (cell == 16) {cell=1;}
+				
+		}; 
+
+		//save shades
+		function saveShades() {
+					//save shades
+		var l1 = document.getElementById("inptclr").style["backgroundColor"];
+		var l2 = document.getElementById("cs1").style["backgroundColor"];
+		var l3 = document.getElementById("cs2").style["backgroundColor"];
+		var l4 = document.getElementById("cs3").style["backgroundColor"];
+		var l5 = document.getElementById("cs4").style["backgroundColor"];
+			
+		document.getElementById("b"+row+"1").style ="background-color:"+l1+"; ";
+		document.getElementById("b"+row+"2").style ="background-color: "+l2+"; ";
+		document.getElementById("b"+row+"3").style ="background-color: "+l3+"; ";
+		document.getElementById("b"+row+"4").style ="background-color: "+l4+"; ";
+		document.getElementById("b"+row+"5").style ="background-color: "+l5+"; ";
+
+		var hx = rgbToHex(l1);	
+		//add base to palette	
+		document.getElementById("cell"+cell+"").value= hx;
+
+		try {
+			localStorage.setItem("b"+row+"1",l1);
+			localStorage.setItem("b"+row+"2",l2);
+			localStorage.setItem("b"+row+"3",l3);
+			localStorage.setItem("b"+row+"4",l4);
+			localStorage.setItem("b"+row+"5",l5);
+
+			localStorage.setItem("cell"+cell+"",hx);
+		
+		} catch (errorShades) {
+			// local storage permission error
+		}
+		
+		row = row+1;
+		if(row == 6) {row=1;}
+
+		cell=cell+1;
+		if (cell == 16) {cell=1;}
+		
+		}; 
 	
+		function saveSwatch(){
+			
+			var mode = document.getElementById("appmode").value;
+			
+			
+			switch (mode) {
+				case "shades":
+					alert("shades swatches");
+					saveShades();
+					break;
+				case "tints":
+					alert("tints swatches");
+					saveTints();
+					break;
+				default:
+					 
+			}
+		};
+
 		function clearswatches(){
 
 			for (i =1 ; i<6; i++ ){
@@ -330,7 +366,7 @@ $=(function $(fx) {    function resume() {
 				}
 			}
 		
-		}
+		};
 
 		function clearpalette(){
 			
@@ -344,7 +380,7 @@ $=(function $(fx) {    function resume() {
 					}
 			}
 		
-		}
+		};
 		   
 	//invoke function
 	eval(""+fx.toString()+"();");
@@ -356,11 +392,11 @@ $=(function $(fx) {    function resume() {
 <div style="clear: both;display:flex;">
 <div class="contentframe">
 <section style="border: 1px solid #eeeeee; border-top: 5px solid black; padding: 16px; box-shadow: 10px 1px 12px #cecece;">
-<input type="button" value=" 💾 Save Swatch" class="btn" onCLick="saveSwatch('shades');">
+<input type="button" value=" 💾 Save Swatch" class="btn" onCLick="$('saveSwatch');">
 <h1>Generate 
-<select><option>Shades</option></select>
-from <input type="color" class="paletteitem" value="#ffffff">  </h1>
-<p> Select Hue, Saturation, Luminosity or change any color attribute below </p>
+<select id="appmode" class="selectnum"><option value="shades">Shades</option><option value="tints">Tints</option></select> from 
+<input type="color" class="paletteitem" value="#ffffff">  </h1>
+<p>  Select Hue, Saturation, Luminosity or change any color attribute below </p>
 <form action="javascript:color1();">
  
 <input type="number" val= #000000 name="colorinput" id="h" placeholder="Hue" onChange="color1();" class="inputnum" /> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -388,32 +424,7 @@ from <input type="color" class="paletteitem" value="#ffffff">  </h1>
 </br>
 
 <section style="border: 1px solid #eeeeee; border-top: 5px solid black; padding: 16px; box-shadow: 10px 1px 12px #cecece">
-<input type="button" value=" 💾 Save Swatch" class="btn" onCLick="saveSwatch('tints');">
-<h1>Color Tints generator</h1>
-<p> <input type="color" class="paletteitem" value="#ffffff"> Select Hue, Saturation, Luminosity or change any color attribute below</p>
-<form action="javascript:color1();">
-<input type="number" val= #000000 name="colorinput" id="th" placeholder="Hue" onChange="color1();"  class="inputnum"/>  &nbsp;&nbsp;&nbsp;&nbsp;
-<input type="number" val= #000000 name="colorinput" id="ts" placeholder="Saturation" onChange="color1();"  class="inputnum" />  &nbsp;&nbsp;&nbsp;&nbsp;
-<input type="number" val= #000000 name="colorinput" id="tl" placeholder="Luminosity" onChange="color1();"  class="inputnum" />  &nbsp;&nbsp;&nbsp;&nbsp;
 
-<label>Color stops to Black</label>
-<input type="number" value="4" name="colorinput" id="tstpcnt" placeholder="4 stops" onChange="color1();"  class="inputnum" />  &nbsp;&nbsp;&nbsp;&nbsp;
-<!--input type="submit" value="generate" class="btn"-->
-
-
-
-</form>
-
-
-<h4>Generated Colors</h4>
-
-<div class="swatches" >
-<span id="tinptclr" class="swatchitem">Base</span>
-<span id="tcs1" class="swatchitem">color stop 1</span>
-<span id="tcs2" class="swatchitem">color stop 2</span>
-<span id="tcs3" class="swatchitem">color stop 3</span>
-<span id="tcs4" class="swatchitem">color stop 4</span>
-</div>
 </section>
 </div>
 <div class="sidebar">
