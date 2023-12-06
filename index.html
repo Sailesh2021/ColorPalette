@@ -155,9 +155,10 @@ function saveSwatch(mode){
 		document.getElementById("b"+row+"3").style ="background-color: "+l3+"; ";
 		document.getElementById("b"+row+"4").style ="background-color: "+l4+"; ";
 		document.getElementById("b"+row+"5").style ="background-color: "+l5+"; ";
-		
+
+		var hx = rgbToHex(l1);	
 		//add base to palette	
-		document.getElementById("cell"+cell+"").value= rgbToHex(l1);
+		document.getElementById("cell"+cell+"").value= hx;
 
 		 
 		localStorage.setItem("b"+row+"1",l1);
@@ -166,6 +167,8 @@ function saveSwatch(mode){
 		localStorage.setItem("b"+row+"4",l4);
 		localStorage.setItem("b"+row+"5",l5);
 
+		localStorage.setItem("cell"+cell+"",hx);
+		
 		row = row+1;
 		if(row == 6) {row=1;}
 
@@ -187,15 +190,17 @@ function saveSwatch(mode){
 		document.getElementById("b"+row+"5").style ="background-color: "+tl5+"; ";
 
 
+		var hx = rgbToHex(tl1);	
 		//add base to palette	
-		document.getElementById("cell"+cell+"").value= rgbToHex(tl1);	
+		document.getElementById("cell"+cell+"").value= hx;
 
 		localStorage.setItem("b"+row+"1",tl1);
 		localStorage.setItem("b"+row+"2",tl2);
 		localStorage.setItem("b"+row+"3",tl3);
 		localStorage.setItem("b"+row+"4",tl4);
 		localStorage.setItem("b"+row+"5",tl5);
-
+		
+		localStorage.setItem("cell"+cell+"",hx);
 
 		row = row+1;
 		
@@ -279,7 +284,10 @@ $=(function $(fx) {    function resume() {
 			document.getElementById("b54").style ="background-color:"+localStorage.getItem("b54");+"; ";   
 			document.getElementById("b55").style ="background-color:"+localStorage.getItem("b55");+"; ";   
 			
-
+			for (i =1; 1<16;i++){
+				document.getElementById("cell"+i+"").style ="background-color:"+localStorage.getItem("cell"+i+"");+"; ";   
+			}
+				
 
 };     
 
