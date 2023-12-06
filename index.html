@@ -287,7 +287,7 @@ $=(function $(fx) {    function resume() {
 			for (i =1; i<16;i++){
 				try {
 
-					if(localStorage.getItem("cell"+i+"") == !null){
+					if(!(localStorage.getItem("cell"+i+"") == null)){
 						document.getElementById("cell"+i+"").style ="background-color:"+localStorage.getItem("cell"+i+"");+"; ";   	
 					}
     					
