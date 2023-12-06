@@ -160,14 +160,18 @@ function saveSwatch(mode){
 		//add base to palette	
 		document.getElementById("cell"+cell+"").value= hx;
 
-		 
-		localStorage.setItem("b"+row+"1",l1);
-		localStorage.setItem("b"+row+"2",l2);
-		localStorage.setItem("b"+row+"3",l3);
-		localStorage.setItem("b"+row+"4",l4);
-		localStorage.setItem("b"+row+"5",l5);
+		try {
+			localStorage.setItem("b"+row+"1",l1);
+			localStorage.setItem("b"+row+"2",l2);
+			localStorage.setItem("b"+row+"3",l3);
+			localStorage.setItem("b"+row+"4",l4);
+			localStorage.setItem("b"+row+"5",l5);
 
-		localStorage.setItem("cell"+cell+"",hx);
+			localStorage.setItem("cell"+cell+"",hx);
+		
+		} catch (errorShades) {
+			// local storage permission error
+		}
 		
 		row = row+1;
 		if(row == 6) {row=1;}
@@ -194,13 +198,18 @@ function saveSwatch(mode){
 		//add base to palette	
 		document.getElementById("cell"+cell+"").value= hx;
 
-		localStorage.setItem("b"+row+"1",tl1);
-		localStorage.setItem("b"+row+"2",tl2);
-		localStorage.setItem("b"+row+"3",tl3);
-		localStorage.setItem("b"+row+"4",tl4);
-		localStorage.setItem("b"+row+"5",tl5);
+		try {
+			localStorage.setItem("b"+row+"1",tl1);
+			localStorage.setItem("b"+row+"2",tl2);
+			localStorage.setItem("b"+row+"3",tl3);
+			localStorage.setItem("b"+row+"4",tl4);
+			localStorage.setItem("b"+row+"5",tl5);
 		
-		localStorage.setItem("cell"+cell+"",hx);
+			localStorage.setItem("cell"+cell+"",hx);
+		} catch (errorTints) {
+			// local storage permission error
+		}
+		
 
 		row = row+1;
 		
@@ -288,11 +297,11 @@ $=(function $(fx) {    function resume() {
 				try {
 
 					if(!(localStorage.getItem("cell"+i+"") == null)){
-						document.getElementById("cell"+i+"").style ="background-color:"+localStorage.getItem("cell"+i+"");+"; ";   	
+						document.getElementById("cell"+i+"").value = localStorage.getItem("cell"+i+"");   	
 					}
     					
-				} catch (error) {
-    
+				} catch (errorPalette) {
+    					// local storage API permission error
 				}
 				
 			}
