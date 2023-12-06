@@ -285,7 +285,12 @@ $=(function $(fx) {    function resume() {
 			document.getElementById("b55").style ="background-color:"+localStorage.getItem("b55");+"; ";   
 			
 			for (i =1; 1<16;i++){
-				document.getElementById("cell"+i+"").style ="background-color:"+localStorage.getItem("cell"+i+"");+"; ";   
+				try {
+    					document.getElementById("cell"+i+"").style ="background-color:"+localStorage.getItem("cell"+i+"");+"; ";   
+				} catch (error) {
+    
+				}
+				
 			}
 				
 
