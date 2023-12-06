@@ -357,8 +357,10 @@ $=(function $(fx) {    function resume() {
 <div class="contentframe">
 <section style="border: 1px solid #eeeeee; border-top: 5px solid black; padding: 16px; box-shadow: 10px 1px 12px #cecece;">
 <input type="button" value=" 💾 Save Swatch" class="btn" onCLick="saveSwatch('shades');">
-<h1>Color Shades generator</h1>
-<p> <input type="color" class="paletteitem" value="#ffffff">  Select Hue, Saturation, Luminosity or change any color attribute below </p>
+<h1>Generate 
+<select><option>Shades</option></select>
+from <input type="color" class="paletteitem" value="#ffffff">  </h1>
+<p> Select Hue, Saturation, Luminosity or change any color attribute below </p>
 <form action="javascript:color1();">
  
 <input type="number" val= #000000 name="colorinput" id="h" placeholder="Hue" onChange="color1();" class="inputnum" /> &nbsp;&nbsp;&nbsp;&nbsp;
