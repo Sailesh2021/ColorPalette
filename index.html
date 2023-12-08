@@ -412,9 +412,21 @@ $=(function $(fx) {
 			}
 		
 		};
-		   
-	//invoke function
-	eval(""+fx.toString()+"();");
+
+			switch (fx.charAt("0")) {
+				case "#":
+					// css id 
+					//fx = "#colorcardpopup.hide"
+					break;
+				case ".":
+					// css class name
+					 
+					break;
+				default:
+					 //invoke named function
+					eval(""+fx.toString()+"();");
+			}
+	
  });
 
 </script>
