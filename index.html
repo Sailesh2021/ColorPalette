@@ -416,7 +416,10 @@ $=(function $(fx) {
 			switch (fx.charAt("0")) {
 				case "#":
 					// css id 
-					//fx = "#colorcardpopup.hide"
+					//fx = "#colorcardpopup.visibility:visible;"
+					var elemId = fx.slice(1,fx.indexOf("."));
+					var cssprop = fx.slice(fx.indexOf(".")+1, fx.length);
+					document.getElementById(elemId).style =""+cssprop+"";
 					break;
 				case ".":
 					// css class name
@@ -438,7 +441,7 @@ $=(function $(fx) {
 
 	
 <section id="colorcardpopup" class="popup colorcardpopup">
-<input type="button" value="X" class="popupxbtn" onclick="$('#colorcardpopup.hide');">
+<input type="button" value="X" class="popupxbtn" onclick="$('#colorcardpopup.visibility:collapse;');">
 <h4>Color Cards  &nbsp; <select id="colormode" class="selectnum" onchange="color1();" ><option value="pantone">Pantone</option><option value="web">Web</option></select></h4>
 
 <div class="swatches">
@@ -457,7 +460,7 @@ $=(function $(fx) {
 <input type="button" value=" 💾 Save Swatch" class="btn" onCLick="$('saveSwatch');">
 <h1>Generate 
 <select id="appmode" class="selectnum" onChange="color1();"><option value="shades">Shades</option><option value="tints">Tints</option></select> from 
-<input type="color" class="paletteitem" value="#ffffff" id="basecolor"/> or <a href="" id="link1" style="font-size: small;text-align: center;padding-top: 4px;" onclick="$('#colorcardpopup.show');">Open Color Cards</a> </h1>
+<input type="color" class="paletteitem" value="#ffffff" id="basecolor"/> or <a href="" id="link1" style="font-size: small;text-align: center;padding-top: 4px;" onclick="$('#colorcardpopup.visibility:visible;');">Open Color Cards</a> </h1>
 <p>  Select Hue, Saturation, Luminosity or change any color attribute below </p>
 <form action="javascript:color1();">
  
