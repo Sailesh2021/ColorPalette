@@ -83,6 +83,37 @@ body {
 	vertical-align: middle;
 }
 
+.popup {
+	border: 1px solid #eeeeee;
+	border-top: 5px solid peachpuff;
+	padding: 16px;
+	box-shadow: 10px 1px 12px #cecece;
+	overlay: auto;
+	position: fixed;
+	background: white;
+	x: 0;
+	y: 0;
+	margin-left: auto;
+	margin-right:auto;
+	margin-top: auto;
+}	
+.popupxbutton {
+	float: right;
+	background: lightcoral;
+	border: none;
+	padding: 4px;
+	min-height: 32px;
+	min-width: 32px;
+	color: floralwhite;
+	margin-top: 10px;
+	border-radius: 2px;
+}	
+
+.colorcardpopup{
+	margin-left: 100px;
+	margin-right: auto;
+	margin-top: 100px;
+}
 	
 </style>
 <script>
@@ -391,8 +422,8 @@ $=(function $(fx) {
 <div style="clear: both;display:flex;">
 
 	
-<section id="colorcardpopup" style="border: 1px solid #eeeeee;border-top: 5px solid peachpuff;padding: 16px;box-shadow: 10px 1px 12px #cecece;overlay: auto;position: fixed;background: white;x: 0;y: 0;margin-left: 100px;margin-right: auto;margin-top: 100px;" class="modal">
-
+<section id="colorcardpopup" class="popup">
+<input type="button" value="X" class="popupxbtn" onclick="$('#colorcardpopup.hide');">
 <h4>Color Cards  &nbsp; <select id="appmode" class="selectnum" onchange="color1();" ><option value="pantone">Pantone</option><option value="web">Web</option></select></h4>
 
 <div class="swatches">
