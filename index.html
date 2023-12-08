@@ -391,7 +391,7 @@ $=(function $(fx) {
 <div style="clear: both;display:flex;">
 
 	
-<section style="border: 1px solid #eeeeee;border-top: 5px solid peachpuff;padding: 16px;box-shadow: 10px 1px 12px #cecece;overlay: auto;position: fixed;background: white;x: 0;y: 0;margin-left: 100px;margin-right: auto;margin-top: 100px;" class="modal">
+<section id="colorcardpopup" style="border: 1px solid #eeeeee;border-top: 5px solid peachpuff;padding: 16px;box-shadow: 10px 1px 12px #cecece;overlay: auto;position: fixed;background: white;x: 0;y: 0;margin-left: 100px;margin-right: auto;margin-top: 100px;" class="modal">
 
 <h4>Color Cards  &nbsp; <select id="appmode" class="selectnum" onchange="color1();" ><option value="pantone">Pantone</option><option value="web">Web</option></select></h4>
 
@@ -411,7 +411,7 @@ $=(function $(fx) {
 <input type="button" value=" 💾 Save Swatch" class="btn" onCLick="$('saveSwatch');">
 <h1>Generate 
 <select id="appmode" class="selectnum" onChange="color1();"><option value="shades">Shades</option><option value="tints">Tints</option></select> from 
-<input type="color" class="paletteitem" value="#ffffff" id="basecolor"/>  </h1>
+<input type="color" class="paletteitem" value="#ffffff" id="basecolor"/> or <a href="" id="link1" style="font-size: small;text-align: center;padding-top: 4px;" onclick="$('#colorcardpopup.show');">Open Color Cards</a> </h1>
 <p>  Select Hue, Saturation, Luminosity or change any color attribute below </p>
 <form action="javascript:color1();">
  
