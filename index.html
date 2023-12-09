@@ -489,7 +489,15 @@ $=(function $(fx) {
 					break;
 
 				case "pastels":
+					 document.getElementById("mdlswchs").innerHTML ="";
 					 
+					var pastels = new Set(["#ffffcc","#ffcc99","#ffcccc","#ff99cc","#ffccff","#cc99ff","#ccccff","#99ccff","#ccffff","#99ffcc","#ccffcc","#ccff99"]);
+					var index=1;
+					pastels.forEach(function(value){
+ 						 document.getElementById("mdlswchs").innerHTML+=("<span id='pastelOption"+index+"' class='swatchitem colspan1' style='background-color:"+value+";' onClick=''></span>");
+					index+=1;
+					});
+					break;
 					break;
 
 				case "acrylic":
@@ -557,7 +565,7 @@ $=(function $(fx) {
 		<option value="image">From Image</option>
 	</select></h4>
 
-<div class="swatches">
+<div class="swatches" id="mdlswchs">
 <span id="ainptclr" class="swatchitem">Base</span>
 <span id="acs1" class="swatchitem">color stop 1</span>
 <span id="acas2" class="swatchitem">color stop 2</span>
