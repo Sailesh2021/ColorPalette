@@ -140,7 +140,7 @@ body {
 <script>
 var row=1;
 var cell=1;
-var pastels="name:#hexhex,name:#hexhex,name:#hexhex";//set k,v // map k,v // read json // load svg // load css sprite // base64 img // sql db // local storage // inline def
+var pastels="name:#ffffcc,name:#ffcc99,name:#ffcccc,name:#ff99cc,name:#ffccff,name:#cc99ff,name:#ccccff,name:#99ccff,name:#ccffff,name:#99ffcc,name:#ccffcc,name:#ccff99";//set k,v // map k,v // read json // load svg // load css sprite // base64 img // sql db // local storage // inline def
 	
 	
 	function color1(){
@@ -476,6 +476,36 @@ $=(function $(fx) {
 		
 		};
 
+		function colorcardpopup(pmode){
+			 
+			
+			switch (pmode) {
+				case "pantone":
+					 
+					break;
+
+				case "web":
+					 
+					break;
+
+				case "pastels":
+					 
+					break;
+
+				case "acrylic":
+					 
+					break;
+
+				case "image":
+					 
+					break;
+
+				default:
+					
+			}
+		
+		};
+
 			switch (fx.charAt("0")) {
 				case "#":
 					// css id 
@@ -489,8 +519,21 @@ $=(function $(fx) {
 					 
 					break;
 				default:
-					 //invoke named function
-					eval(""+fx.toString()+"();");
+					
+					 
+					
+					if(fx.toString().includes("(") &&  fx.toString().includes(")")){
+						
+						 //invoke named function with objects
+						 
+						eval(""+fx.toString()+";");
+					} else {
+
+						 //invoke named function without objects
+						 
+						eval(""+fx.toString()+"();");
+					}
+
 					
 			}
 			
@@ -505,7 +548,14 @@ $=(function $(fx) {
 	
 <section id="colorcardpopup" class="popup colorcardpopup col3 colspan7">
 <input type="button" value="X" class="popupxbtn" onclick="$('#colorcardpopup.visibility:collapse;');">
-<h4>Color Cards  &nbsp; <select id="colormode" class="selectnum" ><option value="pantone">Pantone</option><option value="web">Web</option><option value="web">Pastels</option><option value="web">Acrylic</option><option value="web">From Image</option></select></h4>
+<h4>Color Cards  &nbsp; 
+	<select id="colormode" class="selectnum" onChange="$('colorcardpopup(\''+this.value+'\')');" >
+		<option value="pantone">Pantone</option>
+		<option value="web">Web</option>
+		<option value="pastels">Pastels</option>
+		<option value="acrylic">Acrylic</option>
+		<option value="image">From Image</option>
+	</select></h4>
 
 <div class="swatches">
 <span id="ainptclr" class="swatchitem">Base</span>
