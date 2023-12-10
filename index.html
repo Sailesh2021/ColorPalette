@@ -493,10 +493,10 @@ $=(function $(fx) {
 					elem.innerHTML="";
 
 					//mdlswchs
-					var pastels = new Set(["#ffffcc","#ffcc99","#ffcccc","#ff99cc","#ffccff","#cc99ff","#ccccff","#99ccff","#ccffff","#99ffcc","#ccffcc","#ccff99"]);
+					var pastels = new Set(["HSL(60,100%,90%)","HSL(30,100%,80%)","HSL(0,100%,90%)","HSL(330,100%,80%)","HSL(300,100%,90%)","HSL(270,100%,80%)","HSL(240,100%,90%)","HSL(210,100%,80%)","HSL(180,100%,90%)","HSL(150,100%,80%)","HSL(120,100%,90%)","HSL(90,100%,80%)"]);
 					var index=1;
 					pastels.forEach(function(value){
- 						 elem.innerHTML+=("<span id='pastelOption"+index+"' class='swatchitem colspan1' style='background-color:"+value+";' onClick=''></span>");
+ 						 elem.innerHTML+=("<span hsl='"+value+"' id='pastelOption"+index+"' class='swatchitem colspan1' style='background-color:"+value+";' onClick=''></span>");
 					index+=1;
 					});
 					break;
@@ -514,6 +514,54 @@ $=(function $(fx) {
 			}
 		
 		};
+
+		function colorcardsort(sortmode){
+			 		
+			var cs = new Set();
+			 
+ 			document.getElementById("mdlswchs").childNodes.forEach (function(value){
+       				 var c = value.getAttribute("hsl");
+    
+        			p1 = c.replace("HSL(","[");
+       				p2 = p1.replace(")","]");
+        			p2=p2.replaceAll("%","") ;
+        			var pr = eval(p2);
+        			cs.add(pr);
+ 			});
+			csr = Array.from(cs);
+			csr.sort((a,b) => {
+  
+       			switch (sortmode) {
+				case "H":
+        				v=  a[0]-b[0];
+                    			return v;
+				case "S":
+        				v = a[1]-b[1];
+                    			return v;
+               			case "L":
+        				v= a[2]-b[2];
+                   			return v;
+           			default: break;
+       				}
+			});
+			 
+			var elem = document.getElementById("mdlswchs");
+					elem.innerHTML="";
+
+				 
+					var index=1;
+					csr.forEach(function(value){
+						h = value[0];
+						s = value[1]+"%"
+						l = value[2]+"%";
+						hslcol = "HSL("+h+","+s+","+l+")";
+ 						 elem.innerHTML+=("<span hsl='"+hslcol+"' id='pastelOption"+index+"' class='swatchitem colspan1' style='background-color:"+hslcol+";' onClick=''></span>");
+						index+=1;
+					});
+
+		};
+
+
 
 			switch (fx.charAt("0")) {
 				case "#":
@@ -567,12 +615,10 @@ $=(function $(fx) {
 	</select>
 
 	&nbsp;&nbsp; <label style="font-size: small;"> Sort by &nbsp;  </label>
-	<select id="sorttype" class="selectnum" onChange="" >
+	<select id="sorttype" class="selectnum" onChange="$('colorcardsort(\''+this.value+'\')');" >
 		<option value="S">Saturation </option>
 		<option value="L">Luminosity</option>
 		<option value="H">Hue</option>
-		<option value="W">Warm</option>
-		<option value="C">Cool</option>
 	</select> &nbsp;  <label style="font-size: small;" > low -> high </label>
 </h4>
 
