@@ -476,6 +476,76 @@ $=(function $(fx) {
 		
 		};
 
+		function tintshades(hslcolor) {
+			 
+			var p1 = hslcolor.replace("HSL(","");
+       			var p2 = p1.replace(")","");
+        		p2=p2.replaceAll("%","") ;
+			p2=p2.split(",");
+ 
+
+			var  h = p2[0];
+			var  s = p2[1];
+			var  l = p2[2];
+
+			var  stps = document.getElementById("stpcnt").value;			 
+			var  th = h;
+			var  ts = s;
+			var  tl = l;
+			var  tstps = stps;
+	
+			
+
+			//shades
+			h = parseInt(h);
+			s = parseInt(s);
+			l = parseInt(l);
+			stps = parseInt(stps);
+		
+			
+			//shades
+			var sl = (100-l)/stps;
+		
+			var l1 = l + sl;
+			var l2 = l + sl + sl;
+			var l3 = l + sl + sl + sl;
+			var l4 = l + sl + sl + sl + sl;
+	
+	
+			//tints
+			var tsl = (tl-0)/tstps;
+		
+			var tl1 = tl - tsl;
+			var tl2 = tl - tsl - tsl;
+			var tl3 = tl - tsl - tsl - tsl;
+			var tl4 = tl - tsl - tsl - tsl - tsl;
+	
+			var mode = document.getElementById("appmode").value;
+					
+			switch (mode) {
+				case "shades":
+					document.getElementById("inptclr").style ="background-color: HSL("+h+","+ s +"%,"+l+"%); padding: 10px;border:none;";
+					document.getElementById("cs1").style ="background-color: HSL("+h+","+ s +"%,"+l1+"%); padding: 10px;border:none;";
+					document.getElementById("cs2").style ="background-color: HSL("+h+","+ s +"%,"+l2+"%); padding: 10px;border:none;";
+					document.getElementById("cs3").style ="background-color: HSL("+h+","+ s +"%,"+l3+"%); padding: 10px;border:none;";
+					document.getElementById("cs4").style ="background-color: HSL("+h+","+ s +"%,"+l4+"%); padding: 10px;border:none;";
+	
+	
+					break;
+				case "tints":
+					document.getElementById("inptclr").style ="background-color: HSL("+th+","+ ts +"%,"+tl+"%); padding: 10px;border:none;";
+					document.getElementById("cs1").style ="background-color: HSL("+th+","+ ts +"%,"+tl1+"%); padding: 10px;border:none;";
+					document.getElementById("cs2").style ="background-color: HSL("+th+","+ ts +"%,"+tl2+"%); padding: 10px;border:none;";
+					document.getElementById("cs3").style ="background-color: HSL("+th+","+ ts +"%,"+tl3+"%); padding: 10px;border:none;";
+					document.getElementById("cs4").style ="background-color: HSL("+th+","+ ts +"%,"+tl4+"%); padding: 10px;border:none;";
+	
+	
+					break;
+				default:
+				 
+			}
+		};
+
 		function colorcardpopup(pmode){
 			 
 			
@@ -496,7 +566,7 @@ $=(function $(fx) {
 					var pastels = new Set(["HSL(60,100%,90%)","HSL(30,100%,80%)","HSL(0,100%,90%)","HSL(330,100%,80%)","HSL(300,100%,90%)","HSL(270,100%,80%)","HSL(240,100%,90%)","HSL(210,100%,80%)","HSL(180,100%,90%)","HSL(150,100%,80%)","HSL(120,100%,90%)","HSL(90,100%,80%)"]);
 					var index=1;
 					pastels.forEach(function(value){
- 						 elem.innerHTML+=("<span hsl='"+value+"' id='pastelOption"+index+"' class='swatchitem colspan1' style='background-color:"+value+";' onClick=''></span>");
+ 						 elem.innerHTML+=("<span hsl='"+value+"' id='pastelOption"+index+"' class='swatchitem colspan1' style='background-color:"+value+";' onClick=$('tintshades(\\'"+value+"\\')')></span>");
 					index+=1;
 					});
 					break;
@@ -555,7 +625,7 @@ $=(function $(fx) {
 						s = value[1]+"%"
 						l = value[2]+"%";
 						hslcol = "HSL("+h+","+s+","+l+")";
- 						 elem.innerHTML+=("<span hsl='"+hslcol+"' id='pastelOption"+index+"' class='swatchitem colspan1' style='background-color:"+hslcol+";' onClick=''></span>");
+ 						elem.innerHTML+=("<span hsl='"+hslcol+"' id='pastelOption"+index+"' class='swatchitem colspan1' style='background-color:"+hslcol+";' onClick=$('tintshades(\\'"+hslcol +"\\')')></span>");
 						index+=1;
 					});
 
