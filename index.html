@@ -104,7 +104,7 @@ body {
 	padding: 16px;
 	box-shadow: 10px 1px 12px #cecece;
 	overlay: auto;
-	position: fixed;
+	position: absolute;
 	background: white;
 	visibility: collapse;
 	x: 0;
@@ -475,6 +475,28 @@ $=(function $(fx) {
 			}
 		
 		};
+	
+		function resizeimg() {
+			
+			var w = document.getElementById("widthrange").classList[0];
+			w = parseInt(w.charAt(w.length-1));
+			w = 7 * document.body.clientWidth>>4
+			v = w *  (document.getElementById("widthrange").value/100)
+			i=0;
+   			try {
+       				l =document.getElementById("imgcntnr").childNodes.length;
+    				while (i<l) {
+      
+        				if ("IMG" == document.getElementById("imgcntnr").childNodes[i].nodeName )
+				       	 	{document.getElementById("imgcntnr").childNodes.item(i).width=(v+200); //offset
+	 					}
+        				i++;
+    				}
+			} catch (error) {
+    
+			}
+		
+		};
 
 		function tintshades(hslcolor) {
 			 
@@ -581,9 +603,8 @@ $=(function $(fx) {
 
 				case "image":
 					document.getElementById("mdlswchs").innerHTML="";
-					document.getElementById("mdlswchs").innerHTML+="<div contenteditable='true' style='height: 225px;width: 100%;background: aliceblue;max-height: 225px;border: 1px solid skyblue;'>Copy image from somewhere or take a screen clip to paste the image here!</div>";
+					document.getElementById("mdlswchs").innerHTML+="<input type='range'  min-val=0 max-val=100  id='widthrange' class='colspan7'  onChange=$(\'resizeimg\')><div contenteditable='true' id='imgcntnr' style='height: 225px;width: 100%;background: aliceblue;max-height: 225px;border: 1px solid skyblue;'>Copy image from somewhere or take a screen clip to paste the image here!</div>";
 					break;
-
 				default:
 					
 			}
