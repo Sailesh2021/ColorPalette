@@ -488,7 +488,9 @@ $=(function $(fx) {
     				while (i<l) {
       
         				if ("IMG" == document.getElementById("imgcntnr").childNodes[i].nodeName )
-				       	 	{document.getElementById("imgcntnr").childNodes.item(i).width=(v+200); //offset
+				       	 	{
+							document.getElementById("imgcntnr").childNodes.item(i).width=(v+400); //offset
+							document.getElementById("imgcntnr").childNodes.item(i).style = 'box-shadow: 16px 16px 32px darkgrey;' 
 	 					}
         				i++;
     				}
