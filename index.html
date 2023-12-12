@@ -583,7 +583,26 @@ $=(function $(fx) {
 					break;
 
 				case "web":
-					 
+					 var web = new Set(["HSL(208,100,97)","HSL(34,78,91)","HSL(180,100,50)","HSL(160,100,75)","HSL(180,100,97)","HSL(60,56,91)","HSL(33,100,88)","HSL(0,0,0)","HSL(36,100,90)","HSL(240,100,50)","HSL(271,76,53)","HSL(0,59,41)","HSL(34,57,70)","HSL(182,25,50)","HSL(90,100,50)","HSL(25,75,47)","HSL(16,100,66)","HSL(219,79,66)","HSL(48,100,93)","HSL(348,83,47)","HSL(180,100,50)","HSL(240,100,27)","HSL(180,100,27)","HSL(43,89,38)","HSL(0,0,66)","HSL(120,100,20)","HSL(56,38,58)","HSL(300,100,27)","HSL(82,39,30)","HSL(33,100,50)","HSL(280,61,50)","HSL(0,100,27)","HSL(15,72,70)","HSL(120,25,65)","HSL(248,39,39)","HSL(180,25,25)","HSL(181,100,41)","HSL(282,100,41)","HSL(328,100,54)","HSL(195,100,50)","HSL(0,0,41)","HSL(210,100,56)","HSL(0,68,42)","HSL(40,100,97)","HSL(120,61,34)","HSL(300,100,50)","HSL(0,0,86)","HSL(240,100,99)","HSL(51,100,50)","HSL(43,74,49)","HSL(0,0,50)","HSL(120,100,25)","HSL(84,100,59)","HSL(120,100,97)","HSL(330,100,71)","HSL(0,53,58)","HSL(275,100,25)","HSL(60,100,97)","HSL(54,77,75)","HSL(240,67,94)","HSL(340,100,97)","HSL(90,100,49)","HSL(54,100,90)","HSL(195,53,79)"]);
+					 var index=1;
+					 var elem = document.getElementById("mdlswchs");
+					 elem.innerHTML="";
+
+					web.forEach(function(value){
+     					 
+                        			p1 = value.replace("HSL(","");
+						p2 = p1.replace(")","");
+        					p2=p2.replaceAll("%","") ;
+                  
+                       				p2=  p2.split(",");
+                       				h = p2[0];
+						s = p2[1]+"%"
+						l = p2[2]+"%";
+						hslcol = "HSL("+h+","+s+","+l+")";
+                 
+     						elem.innerHTML+=("<span hsl='"+hslcol+"' id='pastelOption"+index+"' class='swatchitem colspan1' style='background-color:"+hslcol+";' onClick=$('tintshades(\\'"+hslcol+"\\')')></span>");
+						index+=1;
+					});
 					break;
 
 				case "pastels":
