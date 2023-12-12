@@ -619,6 +619,16 @@ $=(function $(fx) {
 					break;
 
 				case "acrylic":
+					var elem = document.getElementById("mdlswchs");
+					elem.innerHTML="";
+
+					//mdlswchs
+					var acrylics = new Set(["HSL(14,78%,62%)","HSL(0,0%,0%)","HSL(39,100%,50%)","HSL(348,83%,47%)","HSL(30,51%,26%)","HSL(158,96%,10%)","HSL(52,100%,50%)","HSL(0,53%,58%)","HSL(60,95%,59%)","HSL(120,73%,75%)","HSL(300,100%,50%)","HSL(0,100%,25%)","HSL(276,100%,85%)","HSL(39,100%,50%)","HSL(205,100%,16%)","HSL(49,15%,53%)","HSL(175,66%,51%)","HSL(228,90%,61%)","HSL(270,100%,50%)","HSL(0,0%,100%)","HSL(26,100%,82%)","HSL(224,64%,45%)","HSL(88,95%,34%)","HSL(197,71%,73%)","HSL(360,98%,74%)","HSL(0,100%,63%)","HSL(75,49%,79%)","HSL(194,43%,37%)"]);
+					var index=1;
+					acrylics.forEach(function(value){
+ 						 elem.innerHTML+=("<span hsl='"+value+"' id='pastelOption"+index+"' class='swatchitem colspan1' style='background-color:"+value+";' onClick=$('tintshades(\\'"+value+"\\')')></span>");
+					index+=1;
+					});
 					 
 					break;
 
