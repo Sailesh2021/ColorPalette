@@ -41,6 +41,24 @@ body {
 	border-radius:2px;
 	box-shadow: 1px 1px #eeeeee;
 }
+.btn-cta {
+	display: inline-flex;
+	padding: 10px 20px;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	border-radius: 4px;
+	background: #035CAE;
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+	border: none;
+	color:white;
+	float:right;
+}
+
+.btn-cta:hover {
+ 	background: #072b4c;
+}
+	
 .contentframe {
 	float: left;
 	width: 79%;
@@ -762,8 +780,8 @@ $=(function $(fx) {
 	
 <div class="contentframe">
 <section style="border: 1px solid #eeeeee; border-top: 5px solid black; padding: 16px; padding-bottom: 28px;box-shadow: 10px 1px 12px #cecece;">
-<input type="button" value=" 💾 Save Swatch" class="btn" onCLick="$('saveSwatch');">
-<h1>Generate 
+<input type="button" value=" 💾 Save Swatch" class="btn-cta" onCLick="$('saveSwatch');">
+<h1 style="margin-top: 4px;">Generate 
 <select id="appmode" class="selectnum" onChange="color1();"><option value="shades">Shades</option><option value="tints">Tints</option></select> from 
 <input type="color" class="paletteitem" value="#ffffff" id="basecolor"/> or <input type="button" id="link1" value="Open Color Card" onclick="$('#colorcardpopup.visibility:visible;');" class="btn-reg"/></h1>
 <p>  Select Hue, Saturation, Luminosity or change any color attribute below </p>
