@@ -277,16 +277,21 @@ var pastels="name:#ffffcc,name:#ffcc99,name:#ffcccc,name:#ff99cc,name:#ffccff,na
 		return "#"+ red.toString()+ green.toString() + blue.toString();
 	}
 	
-    async function cmr() {
-        const response = await fetch("https://ryuco7is3m3coga6fo3766mpxa0ntvok.lambda-url.ap-south-1.on.aws/?id=1&inptclr=rgb(12,24,24)&mode=%22colormatching%22");
-        const colorMatchRange = await response.json();
-        console.log(colorMatchRange)
-    }
+    
 
 //closure
 $=(function $(fx) {  
 
-		  
+		  async function cmr() {
+			const response = await fetch("https://ryuco7is3m3coga6fo3766mpxa0ntvok.lambda-url.ap-south-1.on.aws/?id=1&inptclr=rgb(12,24,24)&mode=%22colormatching%22");
+			const colorMatchRange = await response.json();
+
+			var indx = 0;
+			for (const [key, value] of Object.entries(colorMatchRange)) {
+				document.getElementById("m" + indx + "").style = "background-color:" + value + "; ";
+				indx += 1;
+			}
+		  }
 
 		  function resume() { 
 			//loop performance > shift to loop
@@ -829,7 +834,7 @@ $=(function $(fx) {
 		<span id="cs4" class="swatchitem">color stop 4</span>
 	</div>
 
-	<h4 style="margin-top: 4px;">Match Range <input type="button" value="look for matches" onclick="cmr();"/></h4>
+	<h4 style="margin-top: 4px;">Match Range <input type="button" value="look for matches" onclick="$('cmr');"/></h4>
 
 	<div class="swatches">
 		<span id="m0" class="swatchitem">Base</span>
