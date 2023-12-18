@@ -292,9 +292,9 @@ var pastels="name:#ffffcc,name:#ffcc99,name:#ffcccc,name:#ff99cc,name:#ffccff,na
 $=(function $(fx) {  
 
 		  async function cmr() {
-			const response = await fetch("https://ryuco7is3m3coga6fo3766mpxa0ntvok.lambda-url.ap-south-1.on.aws/?id=1&inptclr=rgb(12,24,24)&mode=%22colormatching%22");
+			  const inptclr = document.getElementById("inptclr").style["background-color"]
+			  const response = await fetch("https://ryuco7is3m3coga6fo3766mpxa0ntvok.lambda-url.ap-south-1.on.aws/?id=1&inptclr=" + inptclr.toString() + "&mode=%22colormatching%22");
 			const colorMatchRange = await response.json();
-
 			var indx = 1;
 			for (const [key, value] of Object.entries(colorMatchRange)) {
 				document.getElementById("m" + indx + "").style = "background-color:" + value + "; ";
