@@ -306,18 +306,94 @@ $=(function $(fx) {
 
 		async function cmr() {
 			var inptclr = document.getElementById("inptclr").style["background-color"];
-			inptclr = inptclr.replaceAll(" ", "");
+			
 
 			var palettename = document.getElementById("colormatchmode").value;
 		
 
 
+            switch (palettename) {
+                case "pantone":
+
+                    
+                    break;
+                case "web":
+                    var web = new Set(["HSL(208,100,97)", "HSL(34,78,91)", "HSL(180,100,50)", "HSL(160,100,75)", "HSL(180,100,97)", "HSL(60,56,91)", "HSL(33,100,88)", "HSL(0,0,0)", "HSL(36,100,90)", "HSL(240,100,50)", "HSL(271,76,53)", "HSL(0,59,41)", "HSL(34,57,70)", "HSL(182,25,50)", "HSL(90,100,50)", "HSL(25,75,47)", "HSL(16,100,66)", "HSL(219,79,66)", "HSL(48,100,93)", "HSL(348,83,47)", "HSL(180,100,50)", "HSL(240,100,27)", "HSL(180,100,27)", "HSL(43,89,38)", "HSL(0,0,66)", "HSL(120,100,20)", "HSL(56,38,58)", "HSL(300,100,27)", "HSL(82,39,30)", "HSL(33,100,50)", "HSL(280,61,50)", "HSL(0,100,27)", "HSL(15,72,70)", "HSL(120,25,65)", "HSL(248,39,39)", "HSL(180,25,25)", "HSL(181,100,41)", "HSL(282,100,41)", "HSL(328,100,54)", "HSL(195,100,50)", "HSL(0,0,41)", "HSL(210,100,56)", "HSL(0,68,42)", "HSL(40,100,97)", "HSL(120,61,34)", "HSL(300,100,50)", "HSL(0,0,86)", "HSL(240,100,99)", "HSL(51,100,50)", "HSL(43,74,49)", "HSL(0,0,50)", "HSL(120,100,25)", "HSL(84,100,59)", "HSL(120,100,97)", "HSL(330,100,71)", "HSL(0,53,58)", "HSL(275,100,25)", "HSL(60,100,97)", "HSL(54,77,75)", "HSL(240,67,94)", "HSL(340,100,97)", "HSL(90,100,49)", "HSL(54,100,90)", "HSL(195,53,79)", "HSL(0,79,72)", "HSL(180,100,94)", "HSL(60,80,90)", "HSL(0,0,83)", "HSL(120,73,75)", "HSL(351,100,86)", "HSL(17,100,74)", "HSL(177,70,41)", "HSL(203,92,75)", "HSL(210,14,53)", "HSL(214,41,78)", "HSL(60,100,94)", "HSL(120,100,50)", "HSL(120,61,50)", "HSL(30,67,94)", "HSL(300,100,50)", "HSL(0,100,25)", "HSL(160,51,60)", "HSL(240,100,40)", "HSL(288,59,58)", "HSL(260,60,65)", "HSL(147,50,47)", "HSL(249,80,67)", "HSL(157,100,49)", "HSL(178,60,55)", "HSL(322,81,43)", "HSL(240,64,27)", "HSL(150,100,98)", "HSL(6,100,94)", "HSL(38,100,85)", "HSL(36,100,84)", "HSL(240,100,25)", "HSL(39,85,95)", "HSL(60,100,25)", "HSL(80,60,35)", "HSL(39,100,50)", "HSL(16,100,50)", "HSL(302,59,65)", "HSL(55,67,80)", "HSL(120,93,79)", "HSL(180,65,81)", "HSL(340,60,65)", "HSL(37,100,92)", "HSL(28,100,86)", "HSL(30,59,53)", "HSL(350,100,88)", "HSL(300,47,75)", "HSL(187,52,80)", "HSL(300,100,25)", "HSL(270,50,40)", "HSL(0,100,50)", "HSL(0,25,65)", "HSL(225,73,57)", "HSL(25,76,31)", "HSL(6,93,71)", "HSL(28,87,67)", "HSL(146,50,36)", "HSL(25,100,97)", "HSL(19,56,40)", "HSL(0,0,75)", "HSL(197,71,73)", "HSL(248,53,58)", "HSL(210,13,50)", "HSL(0,100,99)", "HSL(150,100,50)", "HSL(207,44,49)", "HSL(34,44,69)", "HSL(180,100,25)", "HSL(300,24,80)"]);
+                    var index = 1;
+                    var elem = document.getElementById("prevw");
+                    elem.innerHTML = "";
+
+                    web.forEach(function (value) {
+
+                        p1 = value.replace("HSL(", "");
+                        p2 = p1.replace(")", "");
+                        p2 = p2.replaceAll("%", "");
+
+                        p2 = p2.split(",");
+                        h = p2[0];
+                        s = p2[1] + "%"
+                        l = p2[2] + "%";
+                        hslcol = "HSL(" + h + "," + s + "," + l + ")";
+
+                        elem.innerHTML += ("<span hsl='" + hslcol + "' id='pr" + index + "' class='' style='background-color:" + hslcol + ";height:1px;width:1px;' onClick=$('tintshades(\\'" + hslcol + "\\')')></span>");
+                        index += 1;
+                    });
+                     
+					break;
+                case "pastels":
+
+                    var elem = document.getElementById("prevw");
+                    elem.innerHTML = "";
+
+                    //mdlswchs
+                    var pastels = new Set(["HSL(60,100%,90%)", "HSL(30,100%,80%)", "HSL(0,100%,90%)", "HSL(330,100%,80%)", "HSL(300,100%,90%)", "HSL(270,100%,80%)", "HSL(240,100%,90%)", "HSL(210,100%,80%)", "HSL(180,100%,90%)", "HSL(150,100%,80%)", "HSL(120,100%,90%)", "HSL(90,100%,80%)"]);
+                    var index = 1;
+                    pastels.forEach(function (value) {
+                        elem.innerHTML += ("<span hsl='" + value + "' id='pr" + index + "' class='' style='background-color:" + value + ";height:1px;width:1px;' onClick=$('tintshades(\\'" + value + "\\')')></span>");
+                        index += 1;
+                    });
+					break;
+                case "acrylic":
+
+                    var elem = document.getElementById("prevw");
+                    elem.innerHTML = "";
+
+                    //mdlswchs
+                    var acrylics = new Set(["HSL(14,78%,62%)", "HSL(0,0%,0%)", "HSL(39,100%,50%)", "HSL(348,83%,47%)", "HSL(30,51%,26%)", "HSL(158,96%,10%)", "HSL(52,100%,50%)", "HSL(0,53%,58%)", "HSL(60,95%,59%)", "HSL(120,73%,75%)", "HSL(300,100%,50%)", "HSL(0,100%,25%)", "HSL(276,100%,85%)", "HSL(39,100%,50%)", "HSL(205,100%,16%)", "HSL(49,15%,53%)", "HSL(175,66%,51%)", "HSL(228,90%,61%)", "HSL(270,100%,50%)", "HSL(0,0%,100%)", "HSL(26,100%,82%)", "HSL(224,64%,45%)", "HSL(88,95%,34%)", "HSL(197,71%,73%)", "HSL(360,98%,74%)", "HSL(0,100%,63%)", "HSL(75,49%,79%)", "HSL(194,43%,37%)"]);
+                    var index = 1;
+                    acrylics.forEach(function (value) {
+                        elem.innerHTML += ("<span hsl='" + value + "' id='pr" + index + "' class='' style='background-color:" + value + ";height:1px;width:1px;' onClick=$('tintshades(\\'" + value + "\\')')></span>");
+                        index += 1;
+                    });
+					break;
+                case "mypalette":
+
+
+                    break;
+                default:
+
+            }
+			
+			var colorStrings = "";
+            var l = document.getElementById("prevw").childNodes.length;
+            for (i = 1; i < l; i++) {
+                colorStrings += document.getElementById("pr" + i.toString() + "").style['background-color'] + ";";
+            }
+
+			inptclr =  colorStrings + inptclr;
+			inptclr = inptclr.replaceAll(" ", "");
+			 
+
 			const response = await fetch("https://ryuco7is3m3coga6fo3766mpxa0ntvok.lambda-url.ap-south-1.on.aws/?id=1&inptclr=" + inptclr + "&mode=" + palettename + "");
 			const colorMatchRange = await response.json();
 			var indx = 1;
+            var elem = document.getElementById("matchswatches");
+            elem.innerHTML = "";
+
 			for (const [key, value] of Object.entries(colorMatchRange)) {
-				document.getElementById("m" + indx + "").style = "background-color:" + value + "; ";
-                document.getElementById("m" + indx + "").innerHTML = "<span class='swatchitemtext'>" + key + "</span>"
+              
+                elem.innerHTML += ("<span id='m" + indx + "' class='swatchmatchitem' style='background-color:" + value + "';><span class='swatchitemtext'>" + key + "</span></span>");
+
 				indx += 1;
 			}
 		}
@@ -871,9 +947,10 @@ $=(function $(fx) {
 			<option value="pastels">Pastels</option>
 			<option value="acrylic">Acrylic</option>
 			<option value="mypalette">My Palette 1</option>
-		</select>
+		</select>	
 	</h4>
-	<div class="swatches">
+    <div id="prevw" style="visibility:visible; height:1px;width:1px;"></div>
+	<div class="swatches" id="matchswatches">
 		<span id="m1" class="swatchmatchitem"><span class="swatchitemtext">1</span></span>
 		<span id="m2" class="swatchmatchitem"><span class="swatchitemtext">2</span></span>
 		<span id="m3" class="swatchmatchitem"><span class="swatchitemtext">3</span></span>
