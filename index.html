@@ -291,9 +291,9 @@ var pastels="name:#ffffcc,name:#ffcc99,name:#ffcccc,name:#ff99cc,name:#ffccff,na
 //closure
 $=(function $(fx) {  
 
-		  async function cmr() {
+		  async function cmr(palettename) {
 			  const inptclr = document.getElementById("inptclr").style["background-color"]
-			  const response = await fetch("https://ryuco7is3m3coga6fo3766mpxa0ntvok.lambda-url.ap-south-1.on.aws/?id=1&inptclr=" + inptclr.toString() + "&mode=%22colormatching%22");
+              const response = await fetch("https://ryuco7is3m3coga6fo3766mpxa0ntvok.lambda-url.ap-south-1.on.aws/?id=1&inptclr=" + inptclr.toString() + "&mode=" + palettename+"");
 			const colorMatchRange = await response.json();
 			var indx = 1;
 			for (const [key, value] of Object.entries(colorMatchRange)) {
@@ -843,8 +843,16 @@ $=(function $(fx) {
 		<span id="cs4" class="swatchitem">color stop 4</span>
 	</div>
 
-	<h4 style="margin-top: 20px;">Match Range <input type="button" value="look for matches" class="btn-cta" onclick="$('cmr');"/></h4>
-
+	
+	<h4 style="margin-top: 20px;">
+		Match Range from  <input type="button" value="look for matches" class="btn-cta" onclick="$('cmr(\''+this.value+'\')');"><select id="colormatchmode" class="selectnum" onchange="$('cmr(\''+this.value+'\')');">
+			<option value="pantone">Pantone</option>
+			<option value="web">Web</option>
+			<option value="pastels">Pastels</option>
+			<option value="acrylic">Acrylic</option>
+			<option value="mypalette">My Palette 1</option>
+		</select>
+	</h4>
 	<div class="swatches">
 		<span id="m1" class="swatchmatchitem">1</span>
 		<span id="m2" class="swatchmatchitem">2</span>
