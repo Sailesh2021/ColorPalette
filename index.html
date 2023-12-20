@@ -315,6 +315,7 @@ $=(function $(fx) {
 			var indx = 1;
 			for (const [key, value] of Object.entries(colorMatchRange)) {
 				document.getElementById("m" + indx + "").style = "background-color:" + value + "; ";
+                document.getElementById("m" + indx + "").innerHTML = "<span class='swatchitemtext'>" + key + "</span>"
 				indx += 1;
 			}
 		}
@@ -871,10 +872,10 @@ $=(function $(fx) {
 		</select>
 	</h4>
 	<div class="swatches">
-		<span id="m1" class="swatchmatchitem">1</span>
-		<span id="m2" class="swatchmatchitem">2</span>
-		<span id="m3" class="swatchmatchitem">3</span>
-		<span id="m4" class="swatchmatchitem">4</span>
+		<span id="m1" class="swatchmatchitem"><span class="swatchitemtext">1</span></span>
+		<span id="m2" class="swatchmatchitem"><span class="swatchitemtext">1</span></span>
+		<span id="m3" class="swatchmatchitem"><span class="swatchitemtext">1</span></span>
+		<span id="m4" class="swatchmatchitem"><span class="swatchitemtext">1</span></span>
 	</div>
 </section>
 	
