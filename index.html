@@ -292,8 +292,11 @@ var pastels="name:#ffffcc,name:#ffcc99,name:#ffcccc,name:#ff99cc,name:#ffccff,na
 $=(function $(fx) {  
 
 		  async function cmr() {
-			const inptclr = document.getElementById("inptclr").style["background-color"];
-			const palettename = document.getElementById("colormatchmode").value;
+			var inptclr = document.getElementById("inptclr").style["background-color"];
+			inptclr = inptclr.replaceAll(" ", "");
+
+			var palettename = document.getElementById("colormatchmode").value;
+            palettename = palettename.replaceAll(" ", "");
             const response = await fetch("https://ryuco7is3m3coga6fo3766mpxa0ntvok.lambda-url.ap-south-1.on.aws/?id=1&inptclr=" + inptclr + "&mode=" + palettename+"");
 			const colorMatchRange = await response.json();
 			var indx = 1;
