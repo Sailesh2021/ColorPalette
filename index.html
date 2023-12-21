@@ -398,6 +398,10 @@ $=(function $(fx) {
 			}
 		}
 
+		function dwnldswtchpalt() {
+			alert("coming soon")
+		}
+
 		function resume() { 
 			//loop performance > shift to loop
 			 
@@ -437,7 +441,7 @@ $=(function $(fx) {
 				}
 				
 			}
-				
+			console.log(window.innerHeight);
 
 			  //col widths
 			  try {
@@ -582,6 +586,24 @@ $=(function $(fx) {
 					 
 			}
 		};
+
+
+		function clearswatch(rw) {
+
+			 
+				for (j = 1; j < 6; j++) {
+
+					document.getElementById("b" + rw + j.toString() + "").style = "background-color:#ffffff ";
+					try {
+						localStorage.setItem("b" + rw + j.toString() + "", "#ffffff");
+					} catch (errorLoopApi) {
+
+					}
+				}
+			 
+
+		};
+
 
 		function clearswatches(){
 
@@ -980,9 +1002,11 @@ $=(function $(fx) {
 </div>
 <div class="sidebar">
 <section style="border: 1px solid #eeeeee; border-radius: 4px; border-left: 5px solid darkgrey; padding: 16px; box-shadow: 10px 1px 12px #e1e5e9; height: 600px; width: 210px;">
-<h4 style="margin-top: 4px;">Swatches
-<a href="" id="csw" style="float:right;font-size: x-small;text-align: center;padding-top: 4px;" onClick="$('clearswatches');">Clear All</a>
-</h4>
+	<h4 style="margin-top: 4px;">
+         Swatches 
+	
+		<a href="" id="csw" style="float:right;font-size: x-small;text-align: center;padding-top: 4px;" onClick="$('dwnldswtchpalt');">Download</a>
+	</h4>
 <div id="savedSwatches">
 
 <div class="swatches" >
@@ -990,7 +1014,7 @@ $=(function $(fx) {
 <span id="b12" class="swatchitemsaved"></span>
 <span id="b13" class="swatchitemsaved"></span>
 <span id="b14" class="swatchitemsaved"></span>
-<span id="b15" class="swatchitemsaved"></span>
+<span id="b15" class="swatchitemsaved"><a href="#" class="swatchitemtext" id="r1" onclick="$('clearswatch(\''+1+'\')');">x</a></span>
 </div>
 
 <div class="swatches" >
@@ -998,7 +1022,7 @@ $=(function $(fx) {
 <span id="b22" class="swatchitemsaved"></span>
 <span id="b23" class="swatchitemsaved"></span>
 <span id="b24" class="swatchitemsaved"></span>
-<span id="b25" class="swatchitemsaved"></span>
+<span id="b25" class="swatchitemsaved"><a href="#" class="swatchitemtext" id="r2" onclick="$('clearswatch(\''+2+'\')');">x</a></span>
 </div>
 
 <div class="swatches" >
@@ -1006,7 +1030,7 @@ $=(function $(fx) {
 <span id="b32" class="swatchitemsaved"></span>
 <span id="b33" class="swatchitemsaved"></span>
 <span id="b34" class="swatchitemsaved"></span>
-<span id="b35" class="swatchitemsaved"></span>
+<span id="b35" class="swatchitemsaved"><a href="#" class="swatchitemtext" id="r3" onclick="$('clearswatch(\''+3+'\')');">x</a></span>
 </div>
 
 <div class="swatches" >
@@ -1014,7 +1038,7 @@ $=(function $(fx) {
 <span id="b42" class="swatchitemsaved"></span>
 <span id="b43" class="swatchitemsaved"></span>
 <span id="b44" class="swatchitemsaved"></span>
-<span id="b45" class="swatchitemsaved"></span>
+<span id="b45" class="swatchitemsaved"><a href="#" class="swatchitemtext" id="r4" onclick="$('clearswatch(\''+4+'\')');">x</a></span>
 </div>
 
 <div class="swatches" >
@@ -1022,7 +1046,7 @@ $=(function $(fx) {
 <span id="b52" class="swatchitemsaved"></span>
 <span id="b53" class="swatchitemsaved"></span>
 <span id="b54" class="swatchitemsaved"></span>
-<span id="b55" class="swatchitemsaved"></span>
+<span id="b55" class="swatchitemsaved"><a href="#" class="swatchitemtext" id="r5" onclick="$('clearswatch(\''+5+'\')');">x</a></span>
 </div>
 
 
