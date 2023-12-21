@@ -309,8 +309,8 @@ $=(function $(fx) {
 			
 
 			var palettename = document.getElementById("colormatchmode").value;
-		
 
+			document.getElementById("progressbar").style["visibility"]='visible';
 
             switch (palettename) {
                 case "pantone":
@@ -396,6 +396,7 @@ $=(function $(fx) {
 
 				indx += 1;
 			}
+            document.getElementById("progressbar").style["visibility"] = 'hidden';
 		}
 
 	async function dwnldswtchpalt() {
@@ -977,7 +978,7 @@ $=(function $(fx) {
 		<span id="cs4" class="swatchitem"><span class="swatchitemtext">4</span></span>
 	</div>
 
-	
+
 	<h4 style="margin-top: 20px;">
 		Match Range in  <input type="button" value="look for matches" class="btn-cta" onclick="$('cmr');"><select id="colormatchmode" class="selectnum" onchange="$('cmr');">
 			<option value="pantone">Pantone</option>
@@ -985,15 +986,18 @@ $=(function $(fx) {
 			<option value="pastels">Pastels</option>
 			<option value="acrylic">Acrylic</option>
 			<option value="mypalette">My Palette 1</option>
-		</select>	
+		</select>
+
+		<img src="progress.gif" width="24" id="progressbar" style="margin-left: 4px; margin-top: 8px; margin-right: 4px; visibility: hidden;">
 	</h4>
-    <div id="prevw" style="visibility:visible; height:1px;width:1px;"></div>
+	<div id="prevw" style="visibility:visible; height:1px;width:1px;"></div>
 	<div class="swatches" id="matchswatches">
 		<span id="m1" class="swatchmatchitem"><span class="swatchitemtext">1</span></span>
 		<span id="m2" class="swatchmatchitem"><span class="swatchitemtext">2</span></span>
 		<span id="m3" class="swatchmatchitem"><span class="swatchitemtext">3</span></span>
 		<span id="m4" class="swatchmatchitem"><span class="swatchitemtext">4</span></span>
 	</div>
+	
 </section>
 	
 <br>
