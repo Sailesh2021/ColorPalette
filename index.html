@@ -398,8 +398,24 @@ $=(function $(fx) {
 			}
 		}
 
-		function dwnldswtchpalt() {
-			alert("coming soon")
+	async function dwnldswtchpalt() {
+					var colorSeq = "";
+					for (i = 1; i < 6; i++) {
+						for (j = 1; j < 6; j++) {
+							colorSeq += document.getElementById("b" + i.toString() + j.toString()).style['background-color'] + ";"
+							colorSeq = colorSeq.replaceAll(" ", "");
+						}
+					}
+
+					colorSeq += "---";
+					for (i = 1; i < 16; i++) {
+						colorSeq += document.getElementById("cell" + i.toString()).value + ";"
+					}
+		colorSeq = colorSeq.replaceAll("#", "h");
+
+        const response = await fetch("https://ryuco7is3m3coga6fo3766mpxa0ntvok.lambda-url.ap-south-1.on.aws/?id=2&inptclr=" + colorSeq + "&mode='savecolors'");
+		const colorMatchRange = await response.blob();
+		
 		}
 
 		function resume() { 
@@ -1005,7 +1021,7 @@ $=(function $(fx) {
 	<h4 style="margin-top: 4px;">
          Swatches 
 	
-		<a href="" id="csw" style="float:right;font-size: x-small;text-align: center;padding-top: 4px;" onClick="$('dwnldswtchpalt');">Download</a>
+		<a href="#" id="csw" style="float:right;font-size: x-small;text-align: center;padding-top: 4px;" onClick="$('dwnldswtchpalt');">Download</a>
 	</h4>
 <div id="savedSwatches">
 
@@ -1055,7 +1071,7 @@ $=(function $(fx) {
 <h4>Palette
 <a href="" id="cpt" style="float:right;font-size: x-small;text-align: center;padding-top: 4px;" onClick="$('clearpalette');">Clear All</a>
 </h4>
-<div id="savedSwatches">
+<div id="savedPalette">
 
 <div class="swatches">
 <input type="color" style="width: 40px;height: 40px;border: 1px solid white;" value="#ffffff" id="cell1">
