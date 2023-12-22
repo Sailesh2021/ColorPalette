@@ -414,12 +414,17 @@ $=(function $(fx) {
 					}
 		colorSeq = colorSeq.replaceAll("#", "h");
 
-        const response = await fetch("https://ryuco7is3m3coga6fo3766mpxa0ntvok.lambda-url.ap-south-1.on.aws/?id=2&inptclr=" + colorSeq + "&mode='savecolors'");
-		const colorMatchRange = await response.blob();
+		const response = await fetch("https://ryuco7is3m3coga6fo3766mpxa0ntvok.lambda-url.ap-south-1.on.aws/?id=2&inptclr=" + colorSeq + "&mode='savecolors'");
+		const downloadedCard = await response.text(); 
+		const tempstr = await fetch(downloadedCard);
 		
+        const blob = await tempstr.blob();
+		const filepath = URL.createObjectURL(blob)
+        window.open(filepath)
+
 		}
 
-		function resume() { 
+    function resume() {
 			//loop performance > shift to loop
 			 
 			document.getElementById("b11").style ="background-color:"+localStorage.getItem("b11");+"; ";   
