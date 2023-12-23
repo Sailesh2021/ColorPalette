@@ -408,7 +408,7 @@ $=(function $(fx) {
 						}
 					}
 
-					colorSeq += "---";
+					colorSeq += "-";
 					for (i = 1; i < 16; i++) {
 						colorSeq += document.getElementById("cell" + i.toString()).value + ";"
 					}
@@ -421,8 +421,9 @@ $=(function $(fx) {
 //const blob = await tempstr.blob();
 		//const filepath = URL.createObjectURL(blob)
         //window.open(filepath)
-        const newTab = window.open("","" )
-		newTab.document.write(downloadedCard);
+		const newTab = window.open("", "");
+        
+        newTab.document.write(downloadedCard);
 		}
 
     function resume() {
