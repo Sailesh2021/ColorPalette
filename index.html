@@ -449,14 +449,16 @@ $=(function $(fx) {
 
 	 
 
-		var img = new Image(272,670);
+		 
+        var img = new Image(260, 660);
 		img.onload = function () {
 
 			var canvas = document.createElement('canvas',);
 			canvas.width = 260;
 			canvas.height = 660;
-            var ctx = canvas.getContext('2d');
-
+			
+			var ctx = canvas.getContext('2d');
+			ctx.fillStyle = 'white';
 			ctx.drawImage(img, 0, 0, 272, 670, 0, 0, 272, 670);
 			ctx.save()
 
@@ -1164,7 +1166,7 @@ $=(function $(fx) {
 </div>
 <br>
 <label style="font-weight: bold;font-size: 14px;">What's new?</label><br>
-<label style="font-weight: normal;font-size: 12px;">Download as Image(png) or print a color card. </label>
+<label style="font-weight: normal;font-size: 12px;">Download as picture or print a color card. </label>
 
 <br>
 <br>
