@@ -456,6 +456,7 @@ $=(function $(fx) {
 			var ctx = canvas.getContext('2d');
 			ctx.drawImage(img, 0, 0, 280, 680);
 			ctx.save();
+			console.log("img onload ");
             console.log(canvas.toDataURL());
           canvasdataurl = canvas.toDataURL();
 		};
@@ -962,7 +963,7 @@ $=(function $(fx) {
  });
 
 </script>
-	<link rel="icon" href="favicon.png">
+ 
 <body onload=" $('resume'); ">
 
 <div style="clear: both;display:flex;">
