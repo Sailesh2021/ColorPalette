@@ -457,9 +457,10 @@ $=(function $(fx) {
             var ctx = canvas.getContext('2d');
 
             ctx.drawImage(img, 0, 0, img.width, img.height);
-            ctx.save()
+			ctx.save()
 
-            URL.revokeObjectURL(blburl);
+			 canvas.toDataURL()
+            
 		};
 
       
@@ -467,7 +468,7 @@ $=(function $(fx) {
 
         const win = window.open()
         win.document.write(img.outerHTML);
-
+        
     }
 
     function resume() {
