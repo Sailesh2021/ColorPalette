@@ -444,15 +444,29 @@ $=(function $(fx) {
 		
 
 		const contnt = await response.blob();
-		 
-        const blburl  = URL.createObjectURL(contnt);
+		const blb1 = new Blob([contnt], { type: 'image/svg+xml;charset=utf-8' });
+        const blburl = URL.createObjectURL(blb1);
 
-        const a = document.createElement("a");
-        a.setAttribute('download', "colorcard.svg");
-        a.href = blburl;  
-        a.setAttribute('target', '_blank');
-        a.click();
-        URL.revokeObjectURL(blburl);
+	 
+
+		var img = new Image(272,670);
+		img.onload = function () {
+
+            var canvas = document.createElement('canvas');
+
+            var ctx = canvas.getContext('2d');
+
+            ctx.drawImage(img, 0, 0, img.width, img.height);
+            ctx.save()
+
+            URL.revokeObjectURL(blburl);
+		};
+
+      
+		img.src = blburl;
+
+        const win = window.open()
+        win.document.write(img.outerHTML);
 
     }
 
