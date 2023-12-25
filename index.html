@@ -457,17 +457,17 @@ $=(function $(fx) {
 			ctx.drawImage(img, 0, 0, 280, 680);
 			ctx.save();
             console.log(canvas.toDataURL());
-          
+          canvasdataurl = canvas.toDataURL();
 		};
 
-        img.src = 'favicon.png';
+        img.src = blburl;
 
 
 		
 
         const a = document.createElement("a");
         a.setAttribute('download', "colorcard.svg");
-        a.href = blburl; // canvas.todataurl;
+        a.href = canvasdataurl; // canvas.todataurl;
         a.setAttribute('target', '_blank');
         a.click();
         URL.revokeObjectURL(blburl);
