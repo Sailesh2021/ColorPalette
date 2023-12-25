@@ -444,32 +444,38 @@ $=(function $(fx) {
 		
 
 		const contnt = await response.blob();
-		 
+		 console.log("1 ");
         const blburl  = URL.createObjectURL(contnt);
-
+ console.log("2 ");
 		var canvasdataurl = "" // or inside fn block
-
+ console.log("3 ");
 		var img = new Image();
+	     console.log("4");
 		img.onload = function () {
 			var canvas = document.createElement('canvas');
-			
+			 console.log("5 ");
 			var ctx = canvas.getContext('2d');
+			 console.log("6 ");
 			ctx.drawImage(img, 0, 0, 280, 680);
+			 console.log("7 ");
 			ctx.save();
+			 console.log("8 ");
 			console.log("img onload ");
             console.log(canvas.toDataURL());
           canvasdataurl = canvas.toDataURL();
 		};
-
+ console.log("9 ");
         img.src = blburl;
-
+ console.log("10 ");
 
 		
 
         const a = document.createElement("a");
         a.setAttribute('download', "colorcard.svg");
+	     console.log("11 ");
         a.href = canvasdataurl; // canvas.todataurl;
         a.setAttribute('target', '_blank');
+	     console.log("12 ");
         a.click();
         URL.revokeObjectURL(blburl);
 
