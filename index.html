@@ -453,8 +453,8 @@ $=(function $(fx) {
 		img.onload = function () {
 
 			var canvas = document.createElement('canvas',);
-			canvas.width = 272;
-			canvas.height = 670;
+			canvas.width = 260;
+			canvas.height = 660;
             var ctx = canvas.getContext('2d');
 
 			ctx.drawImage(img, 0, 0, 272, 670, 0, 0, 272, 670);
@@ -463,9 +463,9 @@ $=(function $(fx) {
 			
 
 			var a = document.createElement('a');
-			a.setAttribute('download', 'colorcard.png');
+			a.setAttribute('download', 'colorcard.jpg');
 			a.setAttribute('target', '_blank');
-			a.href = canvas.toDataURL();
+			a.href = canvas.toDataURL('image/jpeg',1);
 			a.click();
 
             
