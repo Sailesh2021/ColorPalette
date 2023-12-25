@@ -452,22 +452,28 @@ $=(function $(fx) {
 		var img = new Image(272,670);
 		img.onload = function () {
 
-            var canvas = document.createElement('canvas');
-
+			var canvas = document.createElement('canvas',);
+			canvas.width = 272;
+			canvas.height = 670;
             var ctx = canvas.getContext('2d');
 
-            ctx.drawImage(img, 0, 0, img.width, img.height);
+			ctx.drawImage(img, 0, 0, 272, 670, 0, 0, 272, 670);
 			ctx.save()
 
-			 canvas.toDataURL()
+			
+
+			var a = document.createElement('a');
+			a.setAttribute('download', 'colorcard.png');
+			a.setAttribute('target', '_blank');
+			a.href = canvas.toDataURL();
+			a.click();
+
             
 		};
 
-      
+        
 		img.src = blburl;
-
-        const win = window.open()
-        win.document.write(img.outerHTML);
+ 
         
     }
 
