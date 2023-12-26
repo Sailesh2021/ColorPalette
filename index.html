@@ -664,12 +664,12 @@ $=(function $(fx) {
 				const response = await fetch("https://ryuco7is3m3coga6fo3766mpxa0ntvok.lambda-url.ap-south-1.on.aws/?id=4&inptclr=" + colorSeq + "&mode='rgbtohsl'");
 				const contnt = await response.text();
 
-			var HSL = contnt.substring(4, contnt.length - 1);
-			var hslarr = HSL.split(',');
-			document.getElementById("h").value = hslarr[0];
-			document.getElementById("s").value = hslarr[1];
-			document.getElementById("l").value = hslarr[2];
-			color1();
+				var HSL = contnt.substring(4, contnt.length - 1);
+				var hslarr = HSL.split(',');
+				document.getElementById("h").value = hslarr[0];
+				document.getElementById("s").value = hslarr[1];
+				document.getElementById("l").value = hslarr[2];
+				color1();
 		 }
 
 		function saveSwatch(){
