@@ -431,10 +431,13 @@ $=(function $(fx) {
        
 	}
 
-	async function dwnldclrccrdimg() {
+	async function dwnldclrccrdimg(fmt) {
 
-
-		document.getElementById("imgwnld").style['opacity'] = 0.2;
+		if (fmt < 2) {
+			document.getElementById("imgwnldp").style['opacity'] = 0.2;
+		} else {
+            document.getElementById("imgwnldj").style['opacity'] = 0.2;
+		}
 
         var colorSeq = "";
         for (i = 1; i < 6; i++) {
@@ -476,9 +479,16 @@ $=(function $(fx) {
 			
 
 			var a = document.createElement('a');
-			a.setAttribute('download', 'colorcard.jpg');
+			
 			a.setAttribute('target', '_blank');
-			a.href = canvas.toDataURL('image/jpeg',1);
+			if (fmt < 2) {
+                a.setAttribute('download', 'colorcard.png');
+                a.href = canvas.toDataURL();
+			} else {
+                a.setAttribute('download', 'colorcard.jpg');
+                a.href = canvas.toDataURL('image/jpeg', 1);
+			}
+           
 			a.click();
 
             
@@ -487,7 +497,11 @@ $=(function $(fx) {
         
 		img.src = blburl;
  
-        document.getElementById("imgwnld").style['opacity'] = 1;
+        if (fmt < 2) {
+            document.getElementById("imgwnldp").style['opacity'] = 1;
+        } else {
+            document.getElementById("imgwnldj").style['opacity'] = 1;
+        }
     }
 
     function resume() {
@@ -1228,7 +1242,8 @@ $=(function $(fx) {
 		Swatches
 		<a href="#" id="csw" style="float:right;font-size: x-small;text-align: center;padding-top: 4px;" onClick="$('dwnldswtchpalt');">Download</a>
 		<label style="font-weight: normal;font-size: 10px;float:right;font-size: x-small;text-align: center;padding-top: 4px;margin-right: 10px;"> | </label>
-		<a href="#" id="imgwnld" style="float:right;font-size: small;text-align: center;padding-top: 4px;margin-right: 8px;" onclick="$('dwnldclrccrdimg');">🖼️</a>
+		<a href="#" id="imgwnldp" style="float:right;font-size: small;text-align: center;padding-top: 4px;margin-right: 8px;" onclick="$('dwnldclrccrdimg(\''+1+'\')');">🖼️</a>
+		<a href="#" id="imgwnldj" style="float:right;font-size: small;text-align: center;padding-top: 4px;margin-right: 8px;background:grey;" onclick="$('dwnldclrccrdimg(\''+2+'\')');">🖼️</a>
 	</h4>
 <div id="savedSwatches">
 
