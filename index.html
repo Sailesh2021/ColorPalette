@@ -774,26 +774,28 @@ $=(function $(fx) {
 			else {
 
 				if (indxarr.length < 1) {
-					alert("Saving a new swatch will update your existing swatches. Try taking a print or downloading existing swatches to continue.");
-					 
+					alert("Clear swatches to add more. Try taking a print or downloading existing swatches to save your palette and swatches.");
+
+				} else {
+                    switch (mode) {
+                        case "shades":
+
+                            saveShades();
+                            break;
+                        case "tints":
+
+                            saveTints();
+                            break;
+                        default:
+
+                    }
 				}
 
 				
              
 				 
 
-					switch (mode) {
-						case "shades":
-
-							saveShades();
-							break;
-						case "tints":
-
-							saveTints();
-							break;
-						default:
-
-					}
+					
 			}
 
 			 
