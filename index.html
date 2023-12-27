@@ -184,7 +184,7 @@ body {
 var row=1;
 var cell=1;
 var pastels="name:#ffffcc,name:#ffcc99,name:#ffcccc,name:#ff99cc,name:#ffccff,name:#cc99ff,name:#ccccff,name:#99ccff,name:#ccffff,name:#99ffcc,name:#ccffcc,name:#ccff99";//set k,v // map k,v // read json // load svg // load css sprite // base64 img // sql db // local storage // inline def
-	var indxarr = [5, 4, 3, 2, 1];
+	var indxarr = [];
 	var indxset = new Set();
 	
 	
@@ -492,33 +492,115 @@ $=(function $(fx) {
 
     function resume() {
 			//loop performance > shift to loop
-			 
-			document.getElementById("b11").style ="background-color:"+localStorage.getItem("b11");+"; ";   
-			document.getElementById("b12").style ="background-color:"+localStorage.getItem("b12");+"; ";   
-			document.getElementById("b13").style ="background-color:"+localStorage.getItem("b13");+"; ";   
-			document.getElementById("b14").style ="background-color:"+localStorage.getItem("b14");+"; ";   
-			document.getElementById("b15").style ="background-color:"+localStorage.getItem("b15");+"; ";   
-			document.getElementById("b21").style ="background-color:"+localStorage.getItem("b21");+"; ";   
-			document.getElementById("b22").style ="background-color:"+localStorage.getItem("b22");+"; ";   
-			document.getElementById("b23").style ="background-color:"+localStorage.getItem("b23");+"; ";   
-			document.getElementById("b24").style ="background-color:"+localStorage.getItem("b24");+"; ";   
-			document.getElementById("b25").style ="background-color:"+localStorage.getItem("b25");+"; ";   
-			document.getElementById("b31").style ="background-color:"+localStorage.getItem("b31");+"; ";   
-			document.getElementById("b32").style ="background-color:"+localStorage.getItem("b32");+"; ";   
-			document.getElementById("b33").style ="background-color:"+localStorage.getItem("b33");+"; ";   
-			document.getElementById("b34").style ="background-color:"+localStorage.getItem("b34");+"; ";   
-			document.getElementById("b35").style ="background-color:"+localStorage.getItem("b35");+"; ";   
-			document.getElementById("b41").style ="background-color:"+localStorage.getItem("b41");+"; ";   
-			document.getElementById("b42").style ="background-color:"+localStorage.getItem("b42");+"; ";   
-			document.getElementById("b43").style ="background-color:"+localStorage.getItem("b43");+"; ";   
-			document.getElementById("b44").style ="background-color:"+localStorage.getItem("b44");+"; ";   
-			document.getElementById("b45").style ="background-color:"+localStorage.getItem("b45");+"; ";   
-			document.getElementById("b51").style ="background-color:"+localStorage.getItem("b51");+"; ";   
-			document.getElementById("b52").style ="background-color:"+localStorage.getItem("b52");+"; ";   
-			document.getElementById("b53").style ="background-color:"+localStorage.getItem("b53");+"; ";   
-			document.getElementById("b54").style ="background-color:"+localStorage.getItem("b54");+"; ";   
-			document.getElementById("b55").style ="background-color:"+localStorage.getItem("b55");+"; ";   
-			
+		    indexarr = [];
+
+			// if all row swatches are white: row is unset
+			// indxarr.push (row int)
+
+		var initcolset = new Set([]);
+
+		document.getElementById("b11").style = "background-color:" + localStorage.getItem("b11"); +"; ";
+		initcolset.add(document.getElementById("b11").style['background-color'].toString());
+
+		document.getElementById("b12").style = "background-color:" + localStorage.getItem("b12"); +"; ";
+        initcolset.add(document.getElementById("b12").style['background-color'].toString());
+
+		document.getElementById("b13").style = "background-color:" + localStorage.getItem("b13"); +"; ";
+        initcolset.add(document.getElementById("b13").style['background-color'].toString());
+
+		document.getElementById("b14").style = "background-color:" + localStorage.getItem("b14"); +"; ";
+        initcolset.add(document.getElementById("b14").style['background-color'].toString());
+
+		document.getElementById("b15").style = "background-color:" + localStorage.getItem("b15"); +"; ";
+        initcolset.add(document.getElementById("b15").style['background-color'].toString());
+
+		
+       
+		if (initcolset.size < 3) { indxarr.push(1);  }
+		initcolset = new Set();
+
+		document.getElementById("b21").style = "background-color:" + localStorage.getItem("b21"); +"; ";
+        initcolset.add(document.getElementById("b21").style['background-color'].toString());
+
+		document.getElementById("b22").style = "background-color:" + localStorage.getItem("b22"); +"; ";
+        initcolset.add(document.getElementById("b22").style['background-color'].toString());
+		
+		document.getElementById("b23").style = "background-color:" + localStorage.getItem("b23"); +"; ";
+        initcolset.add(document.getElementById("b23").style['background-color'].toString());
+
+		document.getElementById("b24").style = "background-color:" + localStorage.getItem("b24"); +"; ";
+        initcolset.add(document.getElementById("b24").style['background-color'].toString());
+
+		document.getElementById("b25").style = "background-color:" + localStorage.getItem("b25"); +"; ";
+        initcolset.add(document.getElementById("b25").style['background-color'].toString());
+
+		
+
+        if (initcolset.size < 3) {indxarr.push(2);  }
+		initcolset = new Set();
+
+		document.getElementById("b31").style = "background-color:" + localStorage.getItem("b31"); +"; ";
+        initcolset.add(document.getElementById("b31").style['background-color'].toString());
+
+		document.getElementById("b32").style = "background-color:" + localStorage.getItem("b32"); +"; ";
+        initcolset.add(document.getElementById("b32").style['background-color'].toString());
+
+		document.getElementById("b33").style = "background-color:" + localStorage.getItem("b33"); +"; ";
+        initcolset.add(document.getElementById("b33").style['background-color'].toString());
+
+		document.getElementById("b34").style = "background-color:" + localStorage.getItem("b34"); +"; ";
+        initcolset.add(document.getElementById("b34").style['background-color'].toString());
+
+		document.getElementById("b35").style = "background-color:" + localStorage.getItem("b35"); +"; ";
+        initcolset.add(document.getElementById("b35").style['background-color'].toString());
+
+       
+        if (initcolset.size < 3) { indxarr.push(3);  }
+		initcolset = new Set();
+
+		document.getElementById("b41").style = "background-color:" + localStorage.getItem("b41"); +"; ";
+        initcolset.add(document.getElementById("b41").style['background-color'].toString());
+
+		document.getElementById("b42").style = "background-color:" + localStorage.getItem("b42"); +"; ";
+        initcolset.add(document.getElementById("b42").style['background-color'].toString());
+
+		document.getElementById("b43").style = "background-color:" + localStorage.getItem("b43"); +"; ";
+        initcolset.add(document.getElementById("b43").style['background-color'].toString());
+
+		document.getElementById("b44").style = "background-color:" + localStorage.getItem("b44"); +"; ";
+        initcolset.add(document.getElementById("b44").style['background-color'].toString());
+
+		document.getElementById("b45").style = "background-color:" + localStorage.getItem("b45"); +"; ";
+        initcolset.add(document.getElementById("b45").style['background-color'].toString());
+
+     
+        if (initcolset.size < 3) {  indxarr.push(4); }
+		initcolset = new Set();
+
+		document.getElementById("b51").style = "background-color:" + localStorage.getItem("b51"); +"; ";
+        initcolset.add(document.getElementById("b51").style['background-color'].toString());
+
+		document.getElementById("b52").style = "background-color:" + localStorage.getItem("b52"); +"; ";
+        initcolset.add(document.getElementById("b52").style['background-color'].toString());
+
+		document.getElementById("b53").style = "background-color:" + localStorage.getItem("b53"); +"; ";
+        initcolset.add(document.getElementById("b53").style['background-color'].toString());
+
+		document.getElementById("b54").style = "background-color:" + localStorage.getItem("b54"); +"; ";
+        initcolset.add(document.getElementById("b54").style['background-color'].toString());
+
+		document.getElementById("b55").style = "background-color:" + localStorage.getItem("b55"); +"; ";
+		initcolset.add(document.getElementById("b55").style['background-color'].toString());
+
+     
+        if (initcolset.size < 3) { indxarr.push(5);  }
+		 
+
+		 
+
+
+		 
+       
 			for (i =1; i<16;i++){
 				try {
 					if(!(localStorage.getItem("cell"+i+"") == null)){
@@ -696,7 +778,7 @@ $=(function $(fx) {
 					 
 				}
 
-                
+				
              
 				 
 
@@ -1071,7 +1153,7 @@ $=(function $(fx) {
 <input type="number" val= #000000 name="colorinput" id="s"  placeholder="Saturation" onChange="color1();" class="inputnum" />  &nbsp;&nbsp;&nbsp;&nbsp;
 <input type="number" val= #000000 name="colorinput" id="l"  placeholder="Luminosity" onChange="color1();"  class="inputnum" />  &nbsp;&nbsp;&nbsp;&nbsp;
 <label>Color stops</label>
-<input type="number" value="4" name="colorinput" id="stpcnt" placeholder="4 stops"/ onChange="color1();" class="inputnum">  &nbsp;&nbsp;&nbsp;&nbsp;
+<input type="number" value="5" name="colorinput" id="stpcnt" placeholder="5 stops"/ onChange="color1();" class="inputnum">  &nbsp;&nbsp;&nbsp;&nbsp;
  
 
 </form>
