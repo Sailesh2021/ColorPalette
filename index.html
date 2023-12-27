@@ -952,8 +952,9 @@ $=(function $(fx) {
 					document.getElementById("cs2").style ="background-color: HSL("+h+","+ s +"%,"+l2+"%); padding: 10px;border:none;";
 					document.getElementById("cs3").style ="background-color: HSL("+h+","+ s +"%,"+l3+"%); padding: 10px;border:none;";
 					document.getElementById("cs4").style ="background-color: HSL("+h+","+ s +"%,"+l4+"%); padding: 10px;border:none;";
-	
-	
+
+					document.getElementById("basecolor").style['border-color'] = document.getElementById("inptclr").style['background-color'];
+					document.getElementById("basecolor").value = rgbToHex(document.getElementById("inptclr").style['background-color']);
 					break;
 				case "tints":
 					document.getElementById("inptclr").style ="background-color: HSL("+th+","+ ts +"%,"+tl+"%); padding: 10px;border:none;";
@@ -962,11 +963,15 @@ $=(function $(fx) {
 					document.getElementById("cs3").style ="background-color: HSL("+th+","+ ts +"%,"+tl3+"%); padding: 10px;border:none;";
 					document.getElementById("cs4").style ="background-color: HSL("+th+","+ ts +"%,"+tl4+"%); padding: 10px;border:none;";
 	
-	
+                    document.getElementById("basecolor").style['border-color'] = document.getElementById("inptclr").style['background-color'];
+                    document.getElementById("basecolor").value = rgbToHex(document.getElementById("inptclr").style['background-color']);
 					break;
 				default:
 				 
 			}
+
+           
+
 		};
 
 		function colorcardpopup(pmode){
